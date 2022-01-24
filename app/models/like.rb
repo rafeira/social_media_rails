@@ -1,3 +1,4 @@
 class Like < ApplicationRecord
-    has_many
+    belongs_to :likeable, :polymorphic => true
+    belongs_to :user
 end
