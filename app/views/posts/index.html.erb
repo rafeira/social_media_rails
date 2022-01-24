@@ -1,0 +1,22 @@
+<h1>Olá mundo</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Autor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <th scope="row">1</th>
+      <td><%= post.id %></td>
+      <td><%= post.title %></td>
+      <td><%= post.description %></td>
+      <td><%= post.user %></td>
+    </tr>
+    <% end %>   
+  </tbody>
+</table>
