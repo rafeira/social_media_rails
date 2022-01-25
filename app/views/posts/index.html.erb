@@ -6,6 +6,8 @@
       <th scope="col">Titulo</th>
       <th scope="col">Descrição</th>
       <th scope="col">Autor</th>
+      <th scope="col">Quantidade de curtidas</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +17,12 @@
       <td><%= post.title %></td>
       <td><%= post.description %></td>
       <td><%= post.user.email %></td>
+      <td><%= "#{post.likes.count} Curtidas" %></td>
+      <% if liked? post %>
+        <td><%= button_to 'Descurtir', root_url + "posts/#{post.id}/likes", method: :post  %></td>
+      <% else %>
+        <td><%= button_to 'Curtir', root_url + "posts/#{post.id}/likes", method: :post  %></td>
+      <% end %>
     </tr>
     <% end %>   
   </tbody>
