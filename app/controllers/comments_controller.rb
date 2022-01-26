@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    before_action :get_post, only: [:new]
+    before_action :get_post, only: [:new, :create]
     def new
         @comment = Comment.new
     end
