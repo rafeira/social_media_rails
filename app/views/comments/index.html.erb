@@ -1,0 +1,23 @@
+<h1>Comentários</h1>
+<table class="table">
+  <p><%= current_user.email %></p>
+  <p><%= button_to 'Fazer logoff', destroy_user_session_path, method: :delete %></p>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Usuário</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.id %></td>
+      <td><%= comment.description %></td>      
+      <td><%= comment.user.email %></td>      
+    </tr>
+    <% end %>   
+  </tbody>
+</table>
+
+</span><%= link_to 'Comentar', new_post_comment_path(post_id: @post.id) %>
