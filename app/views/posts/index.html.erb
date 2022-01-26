@@ -9,6 +9,7 @@
       <th scope="col">Descrição</th>
       <th scope="col">Autor</th>
       <th scope="col">Quantidade de curtidas</th>
+      <th scope="col">Quantidade de comentários</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
       <td><%= post.description %></td>
       <td><%= post.user.email %></td>
       <td><%= "#{post.likes.count} Curtidas" %></td>
+      <td><%=link_to "#{post.comments.count} Comentários", post_comments_path(post_id: post.id) %></td>
       <% if liked? post %>
         <td>
           <%= button_to 'Descurtir', root_url + "posts/#{post.id}/likes", method: :post  %>
