@@ -21,10 +21,14 @@
       <td><%= post.user.email %></td>
       <td><%= "#{post.likes.count} Curtidas" %></td>
       <% if liked? post %>
-        <td><%= button_to 'Descurtir', root_url + "posts/#{post.id}/likes", method: :post  %></td>
+        <td>
+          <%= button_to 'Descurtir', root_url + "posts/#{post.id}/likes", method: :post  %>
       <% else %>
-        <td><%= button_to 'Curtir', root_url + "posts/#{post.id}/likes", method: :post  %></td>
+        <td><span>
+          <%= button_to 'Curtir', root_url + "posts/#{post.id}/likes", method: :post  %>
       <% end %>
+        </span><%= link_to 'Comentar', new_post_comment_path(post_id: post.id) %>
+      </td>
     </tr>
     <% end %>   
   </tbody>
