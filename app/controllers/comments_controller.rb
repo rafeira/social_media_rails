@@ -4,7 +4,10 @@ class CommentsController < ApplicationController
         @comment = Comment.new
     end
     def create
-        @post.comments.build(params.require(:comment)).save
+        comment = @post.comments.build(params.require(:comment).permit(:description))
+        comment.user = current_user
+        comment.save
+        redirect_to posts_path
     end
     private
         def get_post
