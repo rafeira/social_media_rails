@@ -15,9 +15,9 @@ class CommentsController < ApplicationController
     end
     private
         def get_post
-            if action_name == "new"
+            if action_name == "new" or action_name == "index"
                 @post = Post.find(params[:post_id])
-            elsif
+            elsif action_name == "create"
                 @post = Post.find(params[:comment][:post_id])
             end
 
