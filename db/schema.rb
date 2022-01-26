@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_24_182902) do
+ActiveRecord::Schema.define(version: 2022_01_26_185558) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(version: 2022_01_24_182902) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "user_connections", force: :cascade do |t|
+    t.integer "solicitor_user_id"
+    t.integer "requested_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -57,4 +62,6 @@ ActiveRecord::Schema.define(version: 2022_01_24_182902) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "user_connections", "users", column: "requested_user_id"
+  add_foreign_key "user_connections", "users", column: "solicitor_user_id"
 end
