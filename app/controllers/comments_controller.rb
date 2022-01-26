@@ -11,6 +11,11 @@ class CommentsController < ApplicationController
     end
     private
         def get_post
-        @post = Post.find(params[:post_id])
+            if action_name == "new"
+                @post = Post.find(params[:post_id])
+            elsif
+                @post = Post.find(params[:comment][:post_id])
+            end
+
         end
 end
