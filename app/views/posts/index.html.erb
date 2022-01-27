@@ -3,7 +3,7 @@
   <p><%= current_user.email %></p>
   <p><%= button_to 'Fazer logoff', destroy_user_session_path, method: :delete %></p>
   <p><%= link_to 'Criar uma publicação',  new_post_path %></p>
-  <p><%= link_to 'Ver amigos',  friends_path %></p>
+  <p><%= link_to 'Ver amigos',  all_users_path %></p>
   <thead>
     <tr>
       <th scope="col">#</th>
