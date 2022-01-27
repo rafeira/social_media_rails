@@ -1,16 +1,28 @@
 class LikesController < ApplicationController
-  before_action :get_post
+  before_action :get_likeable
   def create
-    like = @post.likes.where(user: current_user).last
+    like = @likeable.likes.where(user: current_user).last
     if like
       like.destroy!
     else
-      @post.likes.build(user: current_user).save!
+      @likeable.likes.build(user: current_user).save!
     end
-    redirect_to posts_path
+    if @likeable.class == Post
+      redirect_to posts_path
+    elsif @likeable.class == Comment
+      redirect_to comments_path(post_id: @likeable.commentable.id)
+    end
   end
   private
-    def get_post
-      @post = Post.find(params[:post_id])
+    def get_likeable
+      if params[:post_id]
+        @likeable = Post.find(params[:post_id])
+      elsif params[:comment_id]
+        @likeable = Comment.find(params[:comment_id])
+      end
+    end
+
+    def create_post_like post
+
     end
 end
