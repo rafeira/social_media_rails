@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, shallow: true
   end
-  get 'friends', action: :index, controller: 'friends'
-  post 'friends/:friend_id', action: :attach, controller: 'friends'
-  delete 'friends/:friend_id', action: :detach, controller: 'friends'
+  resources :comments do
+    resources :likes, shallow: true
+    get 'comments', action: :comment_comments, controller: 'comments'
+  end
   get 'all_users', action: :index, controller: 'all_users'
   post 'all_users/:user_id', action: :attach, controller: 'all_users'
   delete 'all_users/:user_id', action: :detach, controller: 'all_users'
