@@ -3,7 +3,11 @@
     <%= form.label :description %>
     <%= form.text_field :description, class: "form-control", placeholder:"Descrição" %>
   </div>
-  <%= form.hidden_field :post_id, value: @post.id %>
+  <% if @commentable.class == Post %>
+    <%= form.hidden_field :post_id, value: @commentable.id %>
+  <% elsif @commentable.class == Comment %>
+    <%= form.hidden_field :comment_id, value: @commentable.id %>
+  <% end %>
   <div class="actions">
     <%= form.submit nil, class: "btn btn-primary" %>
   </div>
