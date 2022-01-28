@@ -1,16 +1,21 @@
 Rails.application.routes.draw do
-  resources :posts
   devise_for :users
   root to: "posts#index"
   resources :posts do
-    resources :likes, shallow: true
-  end
-  resources :posts do
-    resources :comments, shallow: true
+    post 'likes', action: :create, controller: 'likes'
+    delete 'likes/:like_id', action: :destroy, controller: 'likes'
+    post 'comments', action: :create, controller: 'post_comments'
+    delete 'comments/:comment_id', action: :destroy, controller: 'post_comments'
+    get 'comments', action: :index, controller: 'post_comments'
+    get 'comments/new', action: :new, controller: 'post_comments'
   end
   resources :comments do
-    resources :likes, shallow: true
-    get 'comments', action: :comment_comments, controller: 'comments'
+    post 'likes', action: :create, controller: 'likes'
+    delete 'likes/:like_id', action: :destroy, controller: 'likes'
+    post 'comments', action: :create, controller: 'comment_comments'
+    delete 'comments/:comment_id', action: :destroy, controller: 'comment_comments'
+    get 'comments', action: :index, controller: 'comment_comments'
+    get 'comments/new', action: :new, controller: 'comment_comments'
   end
   get 'all_users', action: :index, controller: 'all_users'
   post 'all_users/:user_id', action: :attach, controller: 'all_users'
