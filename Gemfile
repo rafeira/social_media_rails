@@ -50,6 +50,8 @@ gem 'pry-rails'
 
 gem 'tty-spinner'
 
+gem 'faker'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
