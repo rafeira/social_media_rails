@@ -27,7 +27,7 @@
         <td><span>
           <%= button_to 'Curtir', root_url + "comments/#{comment.id}/likes", method: :post  %>
       <% end %>
-        </span>
+        </span><%= link_to 'Comentar', comment_comments_new_path(comment_id: comment.id) %>
     </tr>
     <% end %>   
   </tbody>
