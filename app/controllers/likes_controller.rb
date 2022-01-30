@@ -7,10 +7,16 @@ class LikesController < ApplicationController
     else
       @likeable.likes.build(user: current_user).save!
     end
+    
+    
     if @likeable.class == Post
       redirect_to posts_path
     elsif @likeable.class == Comment
-      redirect_to comments_path(post_id: @likeable.commentable.id)
+      if @likeable.commentable.class == Post
+        redirect_to post_comments_path(post_id: @likeable.commentable.id)
+      elsif @likeable.commentable.class == Comment
+        redirect_to comment_comments_path(comment_id: @likeable.commentable.id)
+      end
     end
   end
   private
