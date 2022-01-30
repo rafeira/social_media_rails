@@ -1,0 +1,11 @@
+<%= form_with(model: comment, url: post_comments_path(post_id: @post.id), local: true) do |form| %>
+  <p>Post comment new or edit</p>
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, class: "form-control", placeholder:"Descrição" %>
+  </div>
+    <%= form.hidden_field :post_id, value: @post.id %>
+  <div class="actions">
+    <%= form.submit nil, class: "btn btn-primary" %>
+  </div>
+<% end %>

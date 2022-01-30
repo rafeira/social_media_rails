@@ -1,0 +1,36 @@
+<h1>Post Comments</h1>
+<table class="table">
+  <p><%= current_user.email %></p>
+  <p><%= button_to 'Fazer logoff', destroy_user_session_path, method: :delete %></p>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Usuário</th>
+      <th scope="col">Quantidade de curtidas</th>
+      <th scope="col">Quantidade de comentários</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.id %></td>
+      <td><%= comment.description %></td>      
+      <td><%= comment.user.email %></td>
+      <td><%= "#{comment.likes.count} Curtidas" %></td>
+      <td><%=link_to "#{comment.comments.count} Comentários", comment_comments_path(comment_id: comment.id) %></td>
+      <% if liked? comment %>
+        <td>
+          <%= button_to 'Descurtir', root_url + "comments/#{comment.id}/likes", method: :post  %>
+      <% else %>
+        <td><span>
+          <%= button_to 'Curtir', root_url + "comments/#{comment.id}/likes", method: :post  %>
+      <% end %>
+        </span>
+    </tr>
+    <% end %>   
+  </tbody>
+</table>
+
+</span><%= link_to 'Comentar post', post_comments_new_path(post_id: @post.id) %>
