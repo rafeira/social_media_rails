@@ -1,6 +1,6 @@
 class AllUsersController < ApplicationController
     def index
-        @all_users = User.all
+        @all_users = User.all.eager_load(:friends)
         render 'all_users/index'
     end
     def attach
