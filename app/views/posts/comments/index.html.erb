@@ -18,8 +18,8 @@
       <td><%= comment.id %></td>
       <td><%= comment.description %></td>      
       <td><%= comment.user.email %></td>
-      <td><%= "#{comment.likes.count} Curtidas" %></td>
-      <td><%=link_to "#{comment.comments.count} Comentários", comment_comments_path(comment_id: comment.id) %></td>
+      <td><%= "#{comment.likes.length} Curtidas" %></td>
+      <td><%=link_to "#{comment.comments.length} Comentários", comment_comments_path(comment_id: comment.id) %></td>
       <% if liked? comment.likes %>
         <td>
           <%= button_to 'Descurtir', root_url + "comments/#{comment.id}/likes", method: :post  %>
