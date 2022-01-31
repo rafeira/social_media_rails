@@ -26,4 +26,4 @@
           - else
             = button_to 'Curtir', root_url + "comments/#{comment.id}/likes", method: :post
           = link_to 'Comentar', comment_comments_new_path(comment_id: comment.id)
-= link_to 'Comentar post', post_comments_new_path(post_id: @post.id)
+= link_to 'Comentar postagem', post_comments_new_path(post_id: @post.id)
