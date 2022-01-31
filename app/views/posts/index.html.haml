@@ -1,28 +1,37 @@
-%h1 Posts
-%table.table.is-striped
-  %thead
-    %tr
-      %th{:scope => "col"} #
-      %th{:scope => "col"} Titulo
-      %th{:scope => "col"} Descrição
-      %th{:scope => "col"} Autor
-      %th{:scope => "col"} Quantidade de curtidas
-      %th{:scope => "col"} Quantidade de comentários
-      %th{:scope => "col"} Ações
-  %tbody
-    - @posts.each do |post|
-      %tr
-        %td= post.id
-        %td= post.title
-        %td= post.description
-        %td= post.user.email
-        %td= "#{post.likes.length} Curtidas"
-        %td= link_to "#{post.comments.length} Comentários", post_comments_path(post_id: post.id)
-        %td
-          %span
+.container
+  %h1.title Postagens
+  - @posts.each do |post|
+    .block
+      .card.my-6
+        .card-content
+          .media
+            .media-left
+              %figure.image.is-48x48
+                %img{:alt => "Placeholder image", :src => "https://bulma.io/images/placeholders/96x96.png"}/
+            .media-content
+              %p.title.is-4 
+                = post.user.email
+              %p.subtitle.is-6 @johnsmith
+          .content
+            %h1
+              = post.title
+            = post.description
+            .tags.has-addons
+              .tag.is-info
+                = "Curtidas"
+              .tag.is-dark
+                = "#{post.likes.length} "
+              .tag.is-info
+                = link_to "Comentários", post_comments_path(post_id: post.id), class: "has-text-white"
+              .tag.is-dark
+                = link_to "#{post.comments.length}", post_comments_path(post_id: post.id), class: "has-text-white"
+            %br/
+            .tag.is-warning
+              %time{datetime: "2016-1-1"}
+                = post.created_at
+        .card-footer
           - if liked? post.likes
-            = button_to 'Descurtir', root_url + "posts/#{post.id}/likes", method: :post
+            = button_to 'Descurtir', root_url + "posts/#{post.id}/likes", method: :post, class: "card-footer-item button is-danger"
           - else
-            = button_to 'Curtir', root_url + "posts/#{post.id}/likes", method: :post
-            
-          = link_to 'Comentar', post_comments_new_path(post_id: post.id)
+            = button_to 'Curtir', root_url + "posts/#{post.id}/likes", method: :post, class: "card-footer-item button is-info"
+          = link_to 'Comentar', post_comments_new_path(post_id: post.id), class: "card-footer-item button is-primary"
