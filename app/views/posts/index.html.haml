@@ -22,11 +22,11 @@
         %td= post.user.email
         %td= "#{post.likes.length} Curtidas"
         %td= link_to "#{post.comments.length} Comentários", post_comments_path(post_id: post.id)
-        - if liked? post.likes
-          %td
+        %td
+          %span
+          - if liked? post.likes
             = button_to 'Descurtir', root_url + "posts/#{post.id}/likes", method: :post
-            - else
-              %td
-                %span
-                  = button_to 'Curtir', root_url + "posts/#{post.id}/likes", method: :post
-                = link_to 'Comentar', post_comments_new_path(post_id: post.id)
+          - else
+            = button_to 'Curtir', root_url + "posts/#{post.id}/likes", method: :post
+            
+          = link_to 'Comentar', post_comments_new_path(post_id: post.id)

@@ -18,12 +18,11 @@
         %td= comment.user.email
         %td= "#{comment.likes.length} Curtidas"
         %td= link_to "#{comment.comments.length} Comentários", comment_comments_path(comment_id: comment.id)
-        - if liked? comment.likes
-          %td
+        %td
+          %span
+          - if liked? comment.likes
             = button_to 'Descurtir', root_url + "comments/#{comment.id}/likes", method: :post
-            - else
-              %td
-                %span
-                  = button_to 'Curtir', root_url + "comments/#{comment.id}/likes", method: :post
-                = link_to 'Comentar', comment_comments_new_path(comment_id: comment.id)
+          - else
+            = button_to 'Curtir', root_url + "comments/#{comment.id}/likes", method: :post
+          = link_to 'Comentar', comment_comments_new_path(comment_id: comment.id)
 = link_to 'Comentar Comment', comment_comments_new_path(comment_id: @comment_parent.id)
