@@ -101,6 +101,9 @@ GEM
       i18n (>= 1.6, < 2)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    haml (5.2.2)
+      temple (>= 0.8.0)
+      tilt
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.0.2)
@@ -210,7 +213,9 @@ GEM
     stimulus-rails (1.0.2)
       railties (>= 6.0.0)
     strscan (3.0.1)
+    temple (0.8.2)
     thor (1.2.1)
+    tilt (2.0.10)
     timeout (0.2.0)
     tty-cursor (0.7.1)
     tty-spinner (0.9.3)
@@ -247,6 +252,7 @@ DEPENDENCIES
   debug
   devise
   faker
+  haml
   importmap-rails
   jbuilder
   jquery-rails
