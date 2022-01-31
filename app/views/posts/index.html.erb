@@ -22,9 +22,9 @@
       <td><%= post.title %></td>
       <td><%= post.description %></td>
       <td><%= post.user.email %></td>
-      <td><%= "#{post.likes.count} Curtidas" %></td>
-      <td><%=link_to "#{post.comments.count} Comentários", post_comments_path(post_id: post.id) %></td>
-      <% if liked? post %>
+      <td><%= "#{post.likes.length} Curtidas" %></td>
+      <td><%=link_to "#{post.comments.length} Comentários", post_comments_path(post_id: post.id) %></td>
+      <% if liked? post.likes %>
         <td>
           <%= button_to 'Descurtir', root_url + "posts/#{post.id}/likes", method: :post  %>
       <% else %>
