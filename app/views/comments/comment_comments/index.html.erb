@@ -20,7 +20,7 @@
       <td><%= comment.user.email %></td>
       <td><%= "#{comment.likes.count} Curtidas" %></td>
       <td><%=link_to "#{comment.comments.count} Comentários", comment_comments_path(comment_id: comment.id) %></td>
-      <% if liked? comment %>
+      <% if liked? comment.likes %>
         <td>
           <%= button_to 'Descurtir', root_url + "comments/#{comment.id}/likes", method: :post  %>
       <% else %>
