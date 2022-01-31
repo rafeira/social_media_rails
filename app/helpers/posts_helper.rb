@@ -1,5 +1,11 @@
 module PostsHelper
-    def liked? post
-        post.likes.where(user: current_user).last
+    def liked? likes
+        likes.map do |like|
+            if like.user == current_user
+                return true
+            end 
+        end
+        false
     end
+
 end
