@@ -52,7 +52,7 @@ gem 'tty-spinner'
 
 gem 'faker'
 
-gem 'haml'
+gem "haml-rails"
 
 # Use Sass to process CSS
 # gem "sassc-rails"
