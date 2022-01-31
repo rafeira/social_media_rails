@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     def index
-        @posts = current_user.friends.map { |friend| friend.posts}.flatten
+        @posts = current_user.friends_posts.eager_load(:user, :comments, likes: :user)
     end
 
     def new
