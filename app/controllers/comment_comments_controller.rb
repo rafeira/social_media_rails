@@ -2,7 +2,7 @@ class CommentCommentsController < ApplicationController
     before_action :get_comment
 
     def index
-        @comments = @comment_parent.comments
+        @comments = @comment_parent.comments.eager_load(:user, {likes: :user}, :comments)
         render 'comments/comment_comments/index'
     end
 
