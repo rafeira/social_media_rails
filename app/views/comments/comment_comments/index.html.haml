@@ -1,7 +1,6 @@
 %h1 Comment Comments
 %table.table
   %p= current_user.email
-  %p= button_to 'Fazer logoff', destroy_user_session_path, method: :delete
   %thead
     %tr
       %th{:scope => "col"} #
