@@ -1,7 +1,8 @@
-%h1 Post Comments
+%h1.title
+  = "Commentarios da postagem:"
+%h2.subtitle
+  = @post.description
 %table.table
-  %p= current_user.email
-  %p= button_to 'Fazer logoff', destroy_user_session_path, method: :delete
   %thead
     %tr
       %th{:scope => "col"} #
