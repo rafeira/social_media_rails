@@ -1,0 +1,25 @@
+%h1 Olá mundo
+%table.table
+  %p= current_user.email
+  %p= button_to 'Fazer logoff', destroy_user_session_path, method: :delete
+  %thead
+    %tr
+      %th{:scope => "col"} #
+      %th{:scope => "col"} Email
+      %th{:scope => "col"} Ações
+  %tbody
+    - @all_users.each do |user|
+      %tr
+        %td= user.id
+        %td= user.email
+        - if followed? user
+          %td
+            = button_to 'Parar de seguir', root_url + "all_users/#{user.id}", method: :delete
+        - elsif follower? user
+          %td
+            %span
+              = button_to 'Seguir de volta', root_url + "all_users/#{user.id}", method: :post
+        - else
+          %td
+            %span
+              = button_to 'Seguir', root_url + "all_users/#{user.id}", method: :post

@@ -1,0 +1,29 @@
+%h1 Post Comments
+%table.table
+  %p= current_user.email
+  %p= button_to 'Fazer logoff', destroy_user_session_path, method: :delete
+  %thead
+    %tr
+      %th{:scope => "col"} #
+      %th{:scope => "col"} Descrição
+      %th{:scope => "col"} Usuário
+      %th{:scope => "col"} Quantidade de curtidas
+      %th{:scope => "col"} Quantidade de comentários
+      %th{:scope => "col"} Ações
+  %tbody
+    - @comments.each do |comment|
+      %tr
+        %td= comment.id
+        %td= comment.description
+        %td= comment.user.email
+        %td= "#{comment.likes.length} Curtidas"
+        %td= link_to "#{comment.comments.length} Comentários", comment_comments_path(comment_id: comment.id)
+        - if liked? comment.likes
+          %td
+            = button_to 'Descurtir', root_url + "comments/#{comment.id}/likes", method: :post
+            - else
+              %td
+                %span
+                  = button_to 'Curtir', root_url + "comments/#{comment.id}/likes", method: :post
+                = link_to 'Comentar', comment_comments_new_path(comment_id: comment.id)
+= link_to 'Comentar post', post_comments_new_path(post_id: @post.id)
