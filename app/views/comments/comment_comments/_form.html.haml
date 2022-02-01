@@ -1,7 +1,13 @@
-= form_with(model: comment, url: comment_comments_path(comment_id: @comment_parent.id), local: true) do |form|
-  .form-group
-    = form.label :description
-    = form.text_field :description, class: "form-control", placeholder:"Descrição"
-  = form.hidden_field :comment_id, value: @comment.id
-  .actions
-    = form.submit nil, class: "btn btn-primary"
+.container
+  = form_with(model: comment, url: comment_comments_path(comment_id: @comment_parent.id), local: true) do |form|
+    %p
+      - if action_name == 'new'
+        %h1.title Comentando commentário
+      - elsif action_name == 'edit'
+        Editando comentário do comentário
+    .form-group
+      .box
+        = form.label :description, class: "block label"
+        = form.text_field :description, class: "block textarea", placeholder:"Descrição"
+        = form.hidden_field :comment_id, value: @comment.id
+        = form.submit nil, class: "block button is-success"
