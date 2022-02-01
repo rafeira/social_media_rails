@@ -35,4 +35,4 @@
             = button_to 'Descurtir', root_url + "posts/#{comment.id}/likes", method: :post, class: "card-footer-item button is-danger"
           - else
             = button_to 'Curtir', root_url + "posts/#{comment.id}/likes", method: :post, class: "card-footer-item button is-info"
-          = link_to 'Comentar', post_comments_new_path(comment_id: comment.id), class: "card-footer-item button is-primary"
+          = link_to 'Comentar', comment_comments_new_path(comment_id: comment.id), class: "card-footer-item button is-primary"
