@@ -1,24 +1,24 @@
-%h1 Olá mundo
-%table.table
-  %p= current_user.email
-  %thead
-    %tr
-      %th{:scope => "col"} #
-      %th{:scope => "col"} Email
-      %th{:scope => "col"} Ações
-  %tbody
+.container.mt-6
+  .tile.is-ancestor.is-flex-wrap-wrap
     - @all_users.each do |user|
-      %tr
-        %td= user.id
-        %td= user.email
-        - if followed? user
-          %td
-            = button_to 'Parar de seguir', root_url + "all_users/#{user.id}", method: :delete
-        - elsif follower? user
-          %td
-            %span
-              = button_to 'Seguir de volta', root_url + "all_users/#{user.id}", method: :post
-        - else
-          %td
-            %span
-              = button_to 'Seguir', root_url + "all_users/#{user.id}", method: :post
+      .tile.is-3
+        .tile
+          .tile.is-parent
+            %article.tile.is-child.notification.is-dark
+              %p.title 
+                = user.email.split('@').first
+              %p.subtitle
+                = user.id
+              %figure.image.is-1by1button.block
+                %img{:src => "https://bulma.io/images/placeholders/640x480.png"}
+              - if followed? user
+                %td
+                  = button_to 'Parar de seguir', root_url + "all_users/#{user.id}", method: :delete, class: "button is-danger"
+              - elsif follower? user
+                %td
+                  %span
+                    = button_to 'Seguir de volta', root_url + "all_users/#{user.id}", method: :post, class: "button is-primary"
+              - else
+                %td
+                  %span
+                    = button_to 'Seguir', root_url + "all_users/#{user.id}", method: :post, class: "button is-success"
