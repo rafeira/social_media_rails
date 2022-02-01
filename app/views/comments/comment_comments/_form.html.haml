@@ -8,6 +8,6 @@
     .form-group
       .box
         = form.label :description, class: "block label"
-        = form.text_field :description, class: "block textarea", placeholder:"Descrição"
+        = form.text_area :description, class: "block textarea", placeholder:"Descrição"
         = form.hidden_field :comment_id, value: @comment.id
         = form.submit nil, class: "block button is-success"
