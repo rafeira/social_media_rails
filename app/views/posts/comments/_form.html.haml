@@ -3,6 +3,8 @@
     %p
       - if action_name == 'new'
         %h1.title Comentando postagem
+        %h1.subtitle
+          = @post.description
       - elsif action_name == 'edit'
         Editando comentário da postagem
     .form-group
