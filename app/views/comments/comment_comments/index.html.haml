@@ -1,27 +1,38 @@
-%h1 Comment Comments
-%table.table
-  %p= current_user.email
-  %thead
-    %tr
-      %th{:scope => "col"} #
-      %th{:scope => "col"} Descrição
-      %th{:scope => "col"} Usuário
-      %th{:scope => "col"} Quantidade de curtidas
-      %th{:scope => "col"} Quantidade de comentários
-      %th{:scope => "col"} Ações
-  %tbody
-    - @comments.each do |comment|
-      %tr
-        %td= comment.id
-        %td= comment.description
-        %td= comment.user.email
-        %td= "#{comment.likes.length} Curtidas"
-        %td= link_to "#{comment.comments.length} Comentários", comment_comments_path(comment_id: comment.id)
-        %td
-          %span
+.container.mt-6
+  %h1.title
+    = "Commentarios do comentário:"
+  %h2.subtitle
+    = @comment_parent.description
+  - @comments.each do |comment|
+    .block
+      .card.my-6
+        .card-content
+          .media
+            .media-left
+              %figure.image.is-48x48
+                %img{:alt => "Placeholder image", :src => "https://bulma.io/images/placeholders/96x96.png"}/
+            .media-content
+              %p.title.is-4 
+                = comment.user.email
+              %p.subtitle.is-6 @johnsmith
+          .content
+            = comment.description
+            .tags.has-addons
+              .tag.is-info
+                = "Curtidas"
+              .tag.is-dark
+                = "#{comment.likes.length} "
+              .tag.is-info
+                = link_to "Comentários", comment_comments_path(comment_id: comment.id), class: "has-text-white"
+              .tag.is-dark
+                = link_to "#{comment.comments.length}", comment_comments_path(comment_id: comment.id), class: "has-text-white"
+            %br/
+            .tag.is-warning
+              %time{datetime: "2016-1-1"}
+                = comment.created_at
+        .card-footer
           - if liked? comment.likes
-            = button_to 'Descurtir', root_url + "comments/#{comment.id}/likes", method: :post
+            = button_to 'Descurtir', root_url + "comments/#{comment.id}/likes", method: :post, class: "card-footer-item button is-danger"
           - else
-            = button_to 'Curtir', root_url + "comments/#{comment.id}/likes", method: :post
-          = link_to 'Comentar', comment_comments_new_path(comment_id: comment.id)
-= link_to 'Comentar Comment', comment_comments_new_path(comment_id: @comment_parent.id)
+            = button_to 'Curtir', root_url + "comments/#{comment.id}/likes", method: :post, class: "card-footer-item button is-info"
+          = link_to 'Comentar este comentário', comment_comments_new_path(comment_id: comment.id), class: "card-footer-item button is-primary"
