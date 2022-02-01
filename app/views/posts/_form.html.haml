@@ -1,9 +1,11 @@
-= form_with(model: post, local: true) do |form|
-  .form-group
-    = form.label :title
-    = form.text_field :title, class: "form-control", placeholder:"Título"
-  .form-group
-    = form.label :description
-    = form.text_field :description, class: "form-control", placeholder:"Descrição"
-  .actions
-    = form.submit nil, class: "btn btn-primary"
+.mt-6.container
+  = form_with(model: post, local: true) do |form|
+    .box
+      .form-group
+        = form.label :title, class: "block label"
+        = form.text_field :title, class: "input", placeholder:"Título"
+      .form-group.block
+        = form.label :description, class: "block label"
+        = form.text_area :description, class: "block textarea", placeholder:"Descrição"
+      .actions
+        = form.submit nil, class: "block button is-success"
