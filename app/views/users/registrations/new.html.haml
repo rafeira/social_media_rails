@@ -1,21 +1,31 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "users/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "users/shared/links"
+.container
+  %h2.title Sign up
+  .box
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "users/shared/error_messages", resource: resource
+      .field.is-horizontal
+        .field-label.is-normal
+          = f.label :email, class: "label"
+        .field-body
+          .field
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "input is-rounded"
+      .field.is-horizontal
+        .field-label.is-normal
+          = f.label :password, class: "label"
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} characters minimum)
+        .field-body
+          .field
+            = f.password_field :password, autocomplete: "new-password", class: "input is-rounded"
+      .field.is-horizontal
+        .field-label.is-normal
+          = f.label :password_confirmation, class: "label"
+        .field-body
+          .field
+            = f.password_field :password_confirmation, autocomplete: "new-password", class: "input is-rounded"
+      .field
+        .field-label.is-normal
+          .actions
+            = f.submit "Sign up", class: "button is-success"
+          = render "users/shared/links"
