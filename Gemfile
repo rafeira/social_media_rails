@@ -48,6 +48,10 @@ gem 'devise'
 
 gem 'pry-rails'
 
+gem 'pry-remote'
+
+gem 'pry-nav'
+
 gem 'tty-spinner'
 
 gem 'faker'
