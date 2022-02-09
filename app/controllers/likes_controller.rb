@@ -10,7 +10,6 @@ class LikesController < ApplicationController
     
     
     if @likeable.class == Post
-      redirect_to posts_path
     elsif @likeable.class == Comment
       if @likeable.commentable.class == Post
         redirect_to post_comments_path(post_id: @likeable.commentable.id)
@@ -18,6 +17,8 @@ class LikesController < ApplicationController
         redirect_to comment_comments_path(comment_id: @likeable.commentable.id)
       end
     end
+
+    head :ok
   end
   private
     def get_likeable
