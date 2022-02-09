@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "bulma": "^0.9.3",
-    "rxjs": "^7.5.2",
     "stimulus-remote-rails": "^4.0.0"
   }
 }
