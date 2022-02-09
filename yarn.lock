@@ -14,6 +14,11 @@ rxjs@^7.5.2:
   dependencies:
     tslib "^2.1.0"
 
+stimulus-remote-rails@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus-remote-rails/-/stimulus-remote-rails-4.0.0.tgz#64661e662831e0487289c7bea0b8a06c8b67c9a8"
+  integrity sha512-N50b3FoFhoYXKDEepNwHHk5IVLucXdPq/E/tX9MK4IJRysYZdyrkCLj0AyIhmvaI27YlXvyHZtIEJ2MZgz8QJw==
+
 tslib@^2.1.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
