@@ -18,7 +18,6 @@ class LikesController < ApplicationController
       end
     end
 
-    head :ok
   end
   private
     def get_likeable
