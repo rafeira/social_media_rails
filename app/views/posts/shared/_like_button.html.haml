@@ -1,0 +1,1 @@
+= button_to 'Curtir', root_url + "posts/#{post.id}/likes", remote: true, data: { controller: 'remote', action: 'ajax:success->remote#replace' }
