@@ -31,7 +31,7 @@
                 = post.created_at
         .card-footer
           - if liked? post.likes
-            = render partial: 'posts/shared/dislike_button', locals: {post: post}
+            = button_to 'Descurtir', root_url + "posts/#{post.id}/likes", remote: true, data: { controller: 'remote', action: 'ajax:success->remote#replace' }, class:"button is-danger"
           - else
-            = render partial: 'posts/shared/like_button', locals: {post: post}
+            = button_to 'Curtir', root_url + "posts/#{post.id}/likes", remote: true, data: { controller: 'remote', action: 'ajax:success->remote#replace' }, class:"button is-success"
           = link_to 'Comentar esta postagem', post_comments_new_path(post_id: post.id), class: "card-footer-item button is-primary"
