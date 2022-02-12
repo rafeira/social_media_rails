@@ -32,9 +32,8 @@
                 = current_user.email
             .navbar-dropdown.is-right
               %a.navbar-item{:href => "#"}
-                Ver perfil
-              = link_to 'Pessoas',  all_users_path, class: "navbar-item"
-              = link_to 'Criar uma publicação',  new_post_path, class: "navbar-item"
-              %hr.navbar-divider
+                = t('links.profile')
+              = link_to t('links.see_people'),  all_users_path, class: "navbar-item"
+              = link_to t('links.new.post'),  new_post_path, class: "navbar-item"
               = button_to 'Fazer logoff', destroy_user_session_path, method: :delete, class: "navbar-item"
     = yield
