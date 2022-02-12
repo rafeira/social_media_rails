@@ -26,17 +26,6 @@
         .navbar-end
           .navbar-item
             .field.is-grouped
-              -# %p.control
-              -#   %a.bd-tw-button.button{"data-social-action" => "tweet", "data-social-network" => "Twitter", "data-social-target" => "https://bulma.io", :href => "https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&hashtags=bulmaio&url=https://bulma.io&via=jgthms", :target => "_blank"}
-              -#     %span.icon
-              -#       %i.fab.fa-twitter
-              -#     %span
-              -#       Tweet
-              -# %p.control
-              -#   %a.button.is-primary{:href => "https://github.com/jgthms/bulma/releases/download/0.9.3/bulma-0.9.3.zip"}
-              -#     %span.icon
-              -#       %i.fas.fa-download
-              -#     %span Download
           .navbar-item.has-dropdown.is-hoverable
             - if user_signed_in?
               %a.navbar-link{:href => "https://bulma.io/documentation/overview/start/"}
