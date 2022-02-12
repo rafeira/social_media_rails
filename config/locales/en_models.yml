@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    models:
+      post:
+        one: Post
+        other: Posts
+      like:
+        one: Like
+        other: Likes
+      comment:
+        one: Comment
+        other: Comments
+    attributes:
