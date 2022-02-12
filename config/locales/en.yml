@@ -1,6 +1,9 @@
 en:
   current_locale: "English (International)"
   links:
+    profile: Profile
+    see_posts: See post's friends
+    see_people: See people
     like: Like
     dislike: Dislike
     comment:
