@@ -6,3 +6,5 @@ en:
     comment:
       post: Comment this post
       comment: Comment this comment
+    new:
+      post: New post
