@@ -21,7 +21,7 @@
         .navbar-start
           %a.navbar-item{:href => "https://bulma.io/"}
           - if user_signed_in?
-            = link_to 'Ver postagens dos amigos', posts_path, class: "navbar-item" 
+            = link_to t('links.see_posts'), posts_path, class: "navbar-item" 
           
         .navbar-end
           .navbar-item
