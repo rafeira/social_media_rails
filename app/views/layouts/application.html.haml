@@ -35,6 +35,8 @@
                 = t('links.profile')
               = link_to t('links.see_people'),  all_users_path, class: "navbar-item"
               = link_to t('links.new.post'),  new_post_path, class: "navbar-item"
+              = link_to "English", {params: {locale: 'en'}}, class:"navbar-item"
+              = link_to "Português",{ params: {locale: 'pt-BR'}}, class:"navbar-item"
               %hr.navbar-divider
               = button_to t('links.logoff'), destroy_user_session_path, method: :delete, class: "navbar-item"
     = yield
