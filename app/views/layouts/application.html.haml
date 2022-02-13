@@ -2,7 +2,8 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Social Media
+    %title
+      = t('application_name')
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
@@ -11,8 +12,10 @@
   %body
     %nav.navbar.is-primary
       .navbar-brand
-        %a.navbar-item{:href => "https://bulma.io"}
-          %img{:alt => "Bulma: a modern CSS framework based on Flexbox", :height => "28", :src => "https://bulma.io/images/bulma-logo-white.png", :width => "112"}/
+        = link_to( root_path,{ class: "navbar-item"}) do
+          = image_tag 'logo.png', height: "28"
+          %span.ml-2
+            = t('application_name')
         .navbar-burger{"data-target" => "navMenuColorprimary-example"}
           %span
           %span
