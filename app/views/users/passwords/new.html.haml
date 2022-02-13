@@ -1,5 +1,6 @@
 .container
-  %h2.title Esqueceu sua senha?
+  %h2.title
+    =t('devise.forgot_password')
   .box
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
       = render "users/shared/error_messages", resource: resource
@@ -12,5 +13,5 @@
       .field
         .field-label.is-normal
           .actions
-            = f.submit "Send me reset password instructions", class: "button is-success"
+            = f.submit t('devise.links.send_instructions'), class: "button is-success"
           = render "users/shared/links"

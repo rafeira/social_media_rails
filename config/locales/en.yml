@@ -17,4 +17,14 @@ en:
     labels:
       email: Email
       password: Password
+      password_confirmation: Password confirmation
+      remember_me: Remember me
+      characters_minimum: characters minimum
     login: Login
+    sign_up: Sign up
+    forgot_password: Forgot your password?
+    links:
+      login: Log in
+      sign_up: Sign up
+      forgot_password: Forgot your password?
+      send_instructions: Send me reset password instructions

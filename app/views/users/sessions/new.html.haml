@@ -19,9 +19,9 @@
         .field
           .field-label.is-normal
             = f.check_box :remember_me, class: "checkbox"
-            = f.label :remember_me
+            = f.label :remember_me, t('devise.labels.remember_me')
       .field
         .field-label.is-normal
           .actions
-            = f.submit "Log in", class: "button is-success"
+            = f.submit t('devise.links.login'), class: "button is-success"
           = render "users/shared/links"

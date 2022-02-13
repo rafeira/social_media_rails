@@ -17,4 +17,14 @@
     labels:
       email: Email
       password: Senha
+      password_confirmation: Confirmação de senha
+      remember_me: Lembre de mim
+      characters_minimum: caracteres no mínimo
     login: Logar
+    sign_up: Cadastro
+    forgot_password: Esqueceu sua senha?
+    links:
+      login: Logar
+      sign_up: Cadastrar
+      forgot_password: Esqueceu sua senha?
+      send_instructions: Me envie instruções de senha
