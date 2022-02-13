@@ -1,16 +1,17 @@
 .container
-  %h2.title Logar
+  %h2.title 
+    = t('devise.login')
   .box
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field.is-horizontal
         .field-label.is-normal
-          = f.label :email, class: "label"
+          = f.label :email, t('devise.labels.email'), class: "label"
         .field-body
           .field
             = f.email_field :email, autofocus: true, autocomplete: "email", class: "input is-rounded"
       .field.is-horizontal
         .field-label.is-normal
-          = f.label :password, class: "label"
+          = f.label :password, t('devise.labels.password'), class: "label"
         .field-body
           .field
             = f.password_field :password, autocomplete: "current-password", class: "input is-rounded"
