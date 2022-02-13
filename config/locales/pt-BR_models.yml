@@ -1,3 +1,13 @@
 'pt-BR':
   activerecord:
     models:
+      post:
+        one: Postagem
+        other: Postagens
+      like:
+        one: Curtida
+        other: Curtidas
+      comment:
+        one: Comentário
+        other: Comentários
+    attributes:

@@ -1,8 +1,14 @@
 'pt-BR':
-  current_locale: 
+  current_locale: "Português - BR"
   links:
-    like: 
-    dislike: 
+    profile: Perfil
+    see_posts: Ver postagens dos amigos
+    see_people: Pessoas
+    like: Curtir
+    dislike: Descurtir
     comment:
-      post: 
-      comment: 
+      post: Comentar esta postagem
+      comment: Comentar este comentário
+    new:
+      post: Nova postagem
+    logoff: Sair
