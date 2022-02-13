@@ -11,4 +11,9 @@ en:
       comment: Comment this comment
     new:
       post: New post
-    logoff: Logoff  
+    logoff: Logoff
+  devise:
+    labels:
+      email: Email
+      password: Password
+    login: Login

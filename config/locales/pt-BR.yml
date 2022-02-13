@@ -12,3 +12,8 @@
     new:
       post: Nova postagem
     logoff: Sair
+  devise:
+    labels:
+      email: Email
+      password: Senha
+    login: Logar
