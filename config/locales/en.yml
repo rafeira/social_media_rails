@@ -3,6 +3,7 @@ en:
   current_locale: "English (International)"
   labels:
     post_comments_title: Comments of the post
+    comment_comments: "Comments of the comment:"
   links:
     profile: Profile
     see_posts: See post's friends

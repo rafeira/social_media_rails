@@ -3,6 +3,7 @@
   current_locale: "Português - BR"
   labels:
     post_comments: "Comentários da postagem:"
+    comment_comments: "Comentários do comentário:"
   links:
     profile: Perfil
     see_posts: Ver postagens dos amigos

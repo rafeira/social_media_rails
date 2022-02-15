@@ -1,6 +1,6 @@
 .container.mt-6
   %h1.title
-    = "Commentarios do comentário:"
+    = t('labels.comment_comments')
   %h2.subtitle
     = @comment_parent.description
   - @comments.each do |comment|
@@ -19,11 +19,11 @@
             = comment.description
             .tags.has-addons
               .tag.is-info
-                = "Curtidas"
+                = Like.model_name.human(count: 2)
               .tag.is-dark
                 = "#{comment.likes.length} "
               .tag.is-info
-                = link_to "Comentários", comment_comments_path(comment_id: comment.id), class: "has-text-white"
+                = link_to Comment.model_name.human(count: 2), comment_comments_path(comment_id: comment.id), class: "has-text-white"
               .tag.is-dark
                 = link_to "#{comment.comments.length}", comment_comments_path(comment_id: comment.id), class: "has-text-white"
             %br/
@@ -32,7 +32,7 @@
                 = comment.created_at
         .card-footer
           - if liked? comment.likes
-            = button_to 'Descurtir', root_url + "comments/#{comment.id}/likes", method: :post, class: "card-footer-item button is-danger"
+            = button_to t('links.dislike'), root_url + "comments/#{comment.id}/likes", method: :post, class: "card-footer-item button is-danger"
           - else
-            = button_to 'Curtir', root_url + "comments/#{comment.id}/likes", method: :post, class: "card-footer-item button is-info"
-          = link_to 'Comentar este comentário', comment_comments_new_path(comment_id: comment.id), class: "card-footer-item button is-primary"
+            = button_to t('links.like'), root_url + "comments/#{comment.id}/likes", method: :post, class: "card-footer-item button is-info"
+          = link_to t("links.comment.comment"), comment_comments_new_path(comment_id: comment.id), class: "card-footer-item button is-primary"
