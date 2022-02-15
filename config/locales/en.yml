@@ -10,6 +10,9 @@ en:
     see_people: See people
     like: Like
     dislike: Dislike
+    follow: Follow
+    unfollow: Unfollow
+    follow_back: Follow back
     comment:
       post: Comment this post
       comment: Comment this comment

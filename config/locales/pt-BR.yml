@@ -10,6 +10,9 @@
     see_people: Pessoas
     like: Curtir
     dislike: Descurtir
+    follow: Seguir
+    unfollow: Parar de seguir
+    follow_back: Seguir de volta
     comment:
       post: Comentar esta postagem
       comment: Comentar este comentário

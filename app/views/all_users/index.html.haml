@@ -13,12 +13,12 @@
                 %img{:src => "https://bulma.io/images/placeholders/640x480.png"}
               - if followed? user
                 %td
-                  = button_to 'Parar de seguir', root_url + "all_users/#{user.id}", method: :delete, class: "button is-danger"
+                  = button_to t('links.unfollow'), root_url + "all_users/#{user.id}", method: :delete, class: "button is-danger"
               - elsif follower? user
                 %td
                   %span
-                    = button_to 'Seguir de volta', root_url + "all_users/#{user.id}", method: :post, class: "button is-primary"
+                    = button_to t('links.follow_back'), root_url + "all_users/#{user.id}", method: :post, class: "button is-primary"
               - else
                 %td
                   %span
-                    = button_to 'Seguir', root_url + "all_users/#{user.id}", method: :post, class: "button is-success"
+                    = button_to t('links.follow'), root_url + "all_users/#{user.id}", method: :post, class: "button is-success"
