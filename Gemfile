@@ -46,16 +46,6 @@ gem "bootsnap", require: false
 
 gem 'devise'
 
-gem 'pry-rails'
-
-gem 'pry-remote'
-
-gem 'pry-nav'
-
-gem 'tty-spinner'
-
-gem 'faker'
-
 gem "haml-rails"
 
 gem "bulma-rails"
@@ -69,6 +59,11 @@ gem "sassc-rails"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'faker'
+  gem 'tty-spinner'
+  gem 'pry-nav'
 end
 
 group :development do
