@@ -1,6 +1,8 @@
 en:
   application_name: Social Media
   current_locale: "English (International)"
+  labels:
+    post_comments_title: Comments of the post
   links:
     profile: Profile
     see_posts: See post's friends

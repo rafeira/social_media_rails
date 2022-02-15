@@ -1,6 +1,8 @@
 'pt-BR':
   application_name: Mídia Social
   current_locale: "Português - BR"
+  labels:
+    post_comments: "Comentários da postagem:"
   links:
     profile: Perfil
     see_posts: Ver postagens dos amigos
