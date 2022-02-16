@@ -2,11 +2,12 @@
   = form_with(model: comment, url: post_comments_path(post_id: @post.id), local: true) do |form|
     %p
       - if action_name == 'new'
-        %h1.title Comentando postagem
+        %h1.title
+          = t('labels.creating_post_comment')
         %h1.subtitle
           = @post.description
       - elsif action_name == 'edit'
-        Editando comentário da postagem
+        %h1.title Editando comentário da postagem
     .form-group
       .box
         = form.label :description, class: "block label"

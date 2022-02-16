@@ -1,11 +1,13 @@
 .mt-6.container
+  %h1.title
+    = t("labels.creating_post")
   = form_with(model: post, local: true) do |form|
     .box
       .form-group
-        = form.label :title, class: "block label"
+        = form.label  :title, class: "block label"
         = form.text_field :title, class: "input", placeholder:"Título"
       .form-group.block
         = form.label :description, class: "block label"
         = form.text_area :description, class: "block textarea", placeholder:"Descrição"
       .actions
-        = form.submit nil, class: "block button is-success"
+        = form.submit t('links.new.post'), class: "block button is-success"
