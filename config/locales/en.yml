@@ -4,6 +4,8 @@ en:
   labels:
     post_comments_title: Comments of the post
     comment_comments: "Comments of the comment:"
+    creating_post: Creating post
+    creating_post_comment: Creating post comment
   links:
     profile: Profile
     see_posts: See post's friends

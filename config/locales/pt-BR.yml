@@ -4,6 +4,8 @@
   labels:
     post_comments: "Comentários da postagem:"
     comment_comments: "Comentários do comentário:"
+    creating_post: Criando postagem
+    creating_post_comment: Criando comentário da postagem
   links:
     profile: Perfil
     see_posts: Ver postagens dos amigos
