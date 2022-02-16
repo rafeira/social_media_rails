@@ -11,3 +11,8 @@
         one: Comentário
         other: Comentários
     attributes:
+      post:
+        title: Título
+        description: Descrição
+      post:
+        description: Descrição

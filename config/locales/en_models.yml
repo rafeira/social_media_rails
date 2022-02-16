@@ -11,3 +11,8 @@ en:
         one: Comment
         other: Comments
     attributes:
+      post:
+        title: Title
+        description: Description
+      post:
+        description: Description
