@@ -30,9 +30,6 @@
             .tag.is-warning
               %time{datetime: "2016-1-1"}
                 = post.created_at
-        .card-footer
-          - if liked? post.likes
-            = button_to t('links.dislike'), root_url + "posts/#{post.id}/likes", remote: true, data: { controller: 'remote', action: 'ajax:success->remote#replace' }, class:"button is-danger"
-          - else
-            = button_to t('links.like'), root_url + "posts/#{post.id}/likes", remote: true, data: { controller: 'remote', action: 'ajax:success->remote#replace' }, class:"button is-success"
+        .card-footer 
+          = render partial: 'shared/like_button', locals: {post: post}
           = link_to t('links.comment.post'), post_comments_new_path(post_id: post.id), class: "card-footer-item button is-primary"

@@ -1,0 +1,5 @@
+
+- if liked? post.likes
+    = link_to t('links.dislike'), post_likes_path(post.id), 'data-turbo-method': :delete, remote: true, data: { controller: 'remote', action: 'ajax:success->remote#replace' }, class:"button is-danger"
+- else
+    = link_to t('links.like'), post_likes_path(post.id), 'data-turbo-method': :post, remote: true, data: { controller: 'remote', action: 'ajax:success->remote#replace' }, class:"button is-success"
