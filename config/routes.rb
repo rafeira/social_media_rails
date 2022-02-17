@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   root to: "posts#index"
   resources :posts do
     post 'likes', action: :create, controller: 'likes'
-    delete 'likes/:like_id', action: :destroy, controller: 'likes'
+    delete 'likes', action: :destroy, controller: 'likes'
+
     post 'comments', action: :create, controller: 'post_comments'
     delete 'comments/:comment_id', action: :destroy, controller: 'post_comments'
+    
     get 'comments', action: :index, controller: 'post_comments'
     get 'comments/new', action: :new, controller: 'post_comments'
   end
