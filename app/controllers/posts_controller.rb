@@ -8,9 +8,12 @@ class PostsController < ApplicationController
     end
 
     def create
-        post = Post.new(params.require(:post).permit(:title, :description))
-        post.user = current_user
-        post.save!
+        current_user.posts.build(post_params).save!
         redirect_to posts_path
     end
+    private
+        def post_params
+            params.require(:post).permit(:title, :description)
+        end
+
 end
