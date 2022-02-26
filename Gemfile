@@ -50,6 +50,8 @@ gem "haml-rails"
 
 gem "bulma-rails"
 
+gem 'ransack'
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
