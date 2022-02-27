@@ -1,4 +1,10 @@
 .container.mt-6
+  = search_form_for( @q, url: all_users_path) do |f|
+    .field.is-horizontal.mb-6
+      .field-body
+        = f.search_field :email_cont, class: "input is-rounded"
+      .actions.ml-6
+        = f.submit class: "button is-primary"
   .tile.is-ancestor.is-flex-wrap-wrap
     - @all_users.each do |user|
       .tile.is-3
