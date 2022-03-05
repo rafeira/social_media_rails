@@ -41,5 +41,5 @@
                 = link_to t('links.see_people'),  all_users_path, class: "navbar-item"
                 = link_to t('links.new.post'),  new_post_path, class: "navbar-item"
                 %hr.navbar-divider
-                = button_to t('links.logoff'), destroy_user_session_path, method: :delete, class: "navbar-item"
+                = link_to t('links.logoff'), destroy_user_session_path, 'data-turbo-method': :delete, class: "navbar-item"
     = yield
