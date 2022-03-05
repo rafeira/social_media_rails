@@ -17,14 +17,4 @@
                 = user.id
               %figure.image.is-1by1button.block
                 %img{:src => "https://bulma.io/images/placeholders/640x480.png"}
-              - if followed? user
-                %td
-                  = button_to t('links.unfollow'), root_url + "all_users/#{user.id}", method: :delete, class: "button is-danger"
-              - elsif follower? user
-                %td
-                  %span
-                    = button_to t('links.follow_back'), root_url + "all_users/#{user.id}", method: :post, class: "button is-primary"
-              - else
-                %td
-                  %span
-                    = button_to t('links.follow'), root_url + "all_users/#{user.id}", method: :post, class: "button is-success"
+              = render partial: "shared/follow_button", locals: {user: user} 
