@@ -2,7 +2,9 @@ class LikesController < ApplicationController
   before_action :get_likeable
   def create
     if @likeable.class == Post
-      @likeable.likes.build(user: current_user).save!
+      if @likeable.likes.first_or_create!(user: current_user)
+        render 'posts/like'
+      end
     elsif @likeable.class == Comment
       if @likeable.commentable.class == Post
         redirect_to post_comments_path(post_id: @likeable.commentable.id)
@@ -13,7 +15,10 @@ class LikesController < ApplicationController
   end
   def destroy
     like = @likeable.likes.where(user: current_user).last
-    like.destroy! if like
+    if like
+      like.destroy!
+      render 'posts/like'
+    end
   end
   private
     def get_likeable
