@@ -56,6 +56,7 @@ gem 'ransack'
 
 # Use Sass to process CSS
 gem "sassc-rails"
+gem 'pg'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -67,6 +68,7 @@ group :development, :test do
   gem 'pry-remote'
   gem 'faker'
   gem 'tty-spinner'
+  gem 'dotenv-rails'
   gem 'pry-nav'
 end
 
