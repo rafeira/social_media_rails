@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
-    passwords: 'users/passwords',
-    # Add other controllers here as needed
+    passwords: 'users/passwords'
   }
 
   root "posts#index"
@@ -24,6 +23,11 @@ Rails.application.routes.draw do
     delete 'comments/:comment_id', action: :destroy, controller: 'comment_comments'
     get 'comments', action: :index, controller: 'comment_comments'
     get 'comments/new', action: :new, controller: 'comment_comments'
+  end
+  namespace :users do
+    namespace :profile do
+      get 'add_name', to: 'update_data#add_name'
+    end
   end
   get 'all_users', action: :index, controller: 'all_users'
   post 'all_users/:user_id', action: :attach, controller: 'all_users', as: "follow"
