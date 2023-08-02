@@ -6,6 +6,8 @@
     comment_comments: "Comentários do comentário:"
     creating_post: Criando postagem
     creating_post_comment: Criando comentário da postagem
+    profile:
+      add_name: Precisamos do seu nome completo
   links:
     profile: Perfil
     see_posts: Ver postagens dos amigos
@@ -20,6 +22,8 @@
       comment: Comentar este comentário
     new:
       post: Nova postagem
+    profile_item:
+      add_name: Adicionar
     logoff: Sair
   devise:
     labels:

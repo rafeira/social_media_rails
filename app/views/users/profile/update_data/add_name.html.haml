@@ -1,1 +1,16 @@
-= params[:action]
+.mt-6.container
+  %h1.title
+    = t("labels.profile.add_name")
+  - @user.errors.each do |error|
+    %p{style: 'color: red'}
+      = error.full_message
+  = form_with(model: @user, url: users_profile_update_path(@user), method: :patch) do |form|
+    .box
+      .form-group
+        = form.label  :first_name, class: "block label"
+        = form.text_field :first_name, class: "input", placeholder:"Pedro"
+      .form-group.block
+        = form.label :last_name, class: "block label"
+        = form.text_field :last_name, class: "input", placeholder:"da Silva"
+      .actions
+        = form.submit t('links.profile_item.add_name'), class: "block button is-success"

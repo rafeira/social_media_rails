@@ -6,6 +6,8 @@ en:
     comment_comments: "Comments of the comment:"
     creating_post: Creating post
     creating_post_comment: Creating post comment
+    profile:
+      add_name: We need your full name
   links:
     profile: Profile
     see_posts: See post's friends
@@ -20,6 +22,8 @@ en:
       comment: Comment this comment
     new:
       post: New post
+    profile_item:
+      add_name: Add
     logoff: Logoff
   devise:
     labels:
