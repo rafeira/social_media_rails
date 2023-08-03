@@ -40,3 +40,8 @@
       sign_up: Cadastrar
       forgot_password: Esqueceu sua senha?
       send_instructions: Me envie instruções de senha
+  activerecord:
+    errors:
+      models:
+        user:
+          blank: não pode ficar em branco
