@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   namespace :users do
     namespace :profile do
       get 'add_name', to: 'update_data#add_name'
-      patch 'update', to: 'update_data#update'
+      patch 'add_name', to: 'update_data#update'
     end
   end
   get 'all_users', action: :index, controller: 'all_users'
