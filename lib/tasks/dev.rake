@@ -15,17 +15,17 @@ namespace :dev do
       puts "Você não está em ambiente de desenvolvimento!"
     end
   end
-  
+
   desc "Adiciona usuários padrão"
   task add_default_users: :environment do
     User.create!(create_default_users)
   end
-  
+
   desc "Adiciona usuários"
   task add_users: :environment do
     User.create!(create_users)
   end
-  
+
   desc "Adiciona postagens a usuários"
   task add_posts_to_users: :environment do
     users = User.all
@@ -38,7 +38,7 @@ namespace :dev do
       end
     end
   end
-  
+
   desc "Adiciona comentários a postagens"
   task add_comments_to_posts: :environment do
     posts = Post.all
@@ -83,6 +83,8 @@ namespace :dev do
       20.times do
         users << {
           email: Faker::Internet.email,
+          first_name: Faker::Name.first_name,
+          last_name: Faker::Name.last_name,
           password: DEFAULT_PASSWORD,
           password_confirmation: DEFAULT_PASSWORD
         }
@@ -95,10 +97,14 @@ namespace :dev do
         {
           email: 'user@user.com',
           password: DEFAULT_PASSWORD,
+          first_name: Faker::Name.first_name,
+          last_name: Faker::Name.last_name,
           password_confirmation: DEFAULT_PASSWORD
         },
         {
           email: 'rafeira@user.com',
+          first_name: Faker::Name.first_name,
+          last_name: Faker::Name.last_name,
           password: DEFAULT_PASSWORD,
           password_confirmation: DEFAULT_PASSWORD
         },
