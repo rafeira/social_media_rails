@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
 	end
 
 	def verify_user_data
-		redirect_to users_profile_add_name_path if current_user.pending_data?
+		redirect_to users_profile_add_name_path if !!current_user&.pending_data?
 	end
 end
