@@ -1,6 +1,20 @@
+#application-navbar {
+	background-color: rgb(9, 50, 87);
+	color: white;
+	box-shadow: 0px 9px 16px -3px rgba(0,0,0,0.33);
+}
+#application-navbar #application-name{
+	color: white;
+	font-weight: 800;
+}
+
+#application-navbar #application-name:hover{
+	color: rgb(191, 210, 226);
+}
+
 body {
-    background-color: #DFF5F2;
-    height: 100%;
+	background-color: #e4e4e4;
+	height: 100%;
 }
 
 html {
