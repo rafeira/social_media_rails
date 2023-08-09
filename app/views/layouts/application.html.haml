@@ -31,7 +31,7 @@
             .field.is-grouped
           .navbar-item.has-dropdown.is-hoverable
             %a.navbar-link
-              = current_user&.email
+              = current_user&.full_name
             .navbar-dropdown.is-right
               = link_to "English", {params: {locale: 'en'}}, class:"navbar-item"
               = link_to "Português",{ params: {locale: 'pt-BR'}}, class:"navbar-item"
