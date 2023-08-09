@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def pending_data?
     first_name.blank? || last_name.blank?
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
