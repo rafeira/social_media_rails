@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 	before_action :authenticate_user!
 	before_action :set_locale
-	before_action :verify_user_data
+	before_action :verify_user_data, unless: :devise_controller?
 
 	def set_locale
 		cookies[:locale] = params[:locale] if params[:locale]
