@@ -1,4 +1,4 @@
-.container.mt-6
+.container
   %h1.title
     = Post.model_name.human(count: @posts.length)
   - @posts.each do |post|
@@ -10,7 +10,7 @@
               %figure.image.is-48x48
                 %img{:alt => "Placeholder image", :src => "https://bulma.io/images/placeholders/96x96.png"}/
             .media-content
-              %p.title.is-4 
+              %p.title.is-4
                 = post.user.email
               %p.subtitle.is-6 @johnsmith
           .content
@@ -30,6 +30,6 @@
             .tag.is-warning
               %time{datetime: "2016-1-1"}
                 = post.created_at
-        .card-footer 
+        .card-footer
           = render partial: 'shared/like_button', locals: {post: post}
           = link_to t('links.comment.post'), post_comments_new_path(post_id: post.id), class: "card-footer-item button is-primary"
