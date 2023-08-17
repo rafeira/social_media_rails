@@ -1,4 +1,4 @@
-.container.mt-6
+.container
   = search_form_for( @q, url: all_users_path) do |f|
     .field.is-horizontal.mb-6
       .field-body
@@ -11,10 +11,10 @@
         .tile
           .tile.is-parent
             %article.tile.is-child.notification.is-dark
-              %p.title 
+              %p.title
                 = user.email.split('@').first
               %p.subtitle
                 = user.id
               %figure.image.is-1by1button.block
                 %img{:src => "https://bulma.io/images/placeholders/640x480.png"}
-              = render partial: "shared/follow_button", locals: {user: user} 
+              = render partial: "shared/follow_button", locals: {user: user}
