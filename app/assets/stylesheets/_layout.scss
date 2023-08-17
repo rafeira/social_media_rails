@@ -1,3 +1,16 @@
+* {
+	box-sizing: content-box;
+	padding: 0%;
+	margin: 0%;
+}
+html {
+	height: auto;
+}
+
+body {
+	height: 100vh;
+}
+
 #application-navbar {
 	background-color: rgb(9, 50, 87);
 	color: white;
@@ -12,11 +25,7 @@
 	color: rgb(191, 210, 226);
 }
 
-body {
-	background-color: #e4e4e4;
-	height: 100%;
+#content-containter {
+	background-color: rgb(235, 235, 235);
 }
 
-html {
-    height: 100%;
-}
