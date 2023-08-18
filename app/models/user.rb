@@ -13,8 +13,6 @@ class User < ApplicationRecord
   has_many :likes
   has_many :friends_posts, through: :friends, source: :posts
 
-  validates :first_name, :last_name, presence: true
-
   def pending_data?
     first_name.blank? || last_name.blank?
   end
