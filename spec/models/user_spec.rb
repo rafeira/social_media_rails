@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:built_user) { build(:user) }
   context 'instance methods' do
     it '#full_name' do
-      user = create(:user)
-      full_name = "#{user.first_name} #{user.last_name}"
-      expect(user.full_name).to eq(full_name)
+      full_name = "#{built_user.first_name} #{built_user.last_name}"
+      expect(built_user.full_name).to eq(full_name)
     end
   end
   context 'validations' do
