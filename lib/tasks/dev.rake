@@ -32,8 +32,8 @@ namespace :dev do
     users.each do |user|
       rand(0..5).times do
         user.posts.build(
-          title: Faker::Lorem.words(number: rand(2..5)).join(' '),
-          description: Faker::Lorem.paragraphs(number: rand(2..4)).join("\n")
+          title: FFaker::Lorem.words(rand(2..5)).join(' '),
+          description: FFaker::Lorem.paragraphs(rand(2..4)).join("\n")
         ).save!
       end
     end
@@ -45,7 +45,7 @@ namespace :dev do
     posts.each do |post|
       rand(1..4).times do
         post.comments.build(
-          description: Faker::Lorem.paragraphs(number: 2).join("\n"),
+          description: FFaker::Lorem.paragraphs(2).join("\n"),
           user: User.all.sample
         ).save!
       end
@@ -82,9 +82,9 @@ namespace :dev do
       users = []
       20.times do
         users << {
-          email: Faker::Internet.email,
-          first_name: Faker::Name.first_name,
-          last_name: Faker::Name.last_name,
+          email: FFaker::Internet.email,
+          first_name: FFaker::Name.first_name,
+          last_name: FFaker::Name.last_name,
           password: DEFAULT_PASSWORD,
           password_confirmation: DEFAULT_PASSWORD
         }
@@ -97,14 +97,14 @@ namespace :dev do
         {
           email: 'user@user.com',
           password: DEFAULT_PASSWORD,
-          first_name: Faker::Name.first_name,
-          last_name: Faker::Name.last_name,
+          first_name: FFaker::Name.first_name,
+          last_name: FFaker::Name.last_name,
           password_confirmation: DEFAULT_PASSWORD
         },
         {
           email: 'rafeira@user.com',
-          first_name: Faker::Name.first_name,
-          last_name: Faker::Name.last_name,
+          first_name: FFaker::Name.first_name,
+          last_name: FFaker::Name.last_name,
           password: DEFAULT_PASSWORD,
           password_confirmation: DEFAULT_PASSWORD
         },
