@@ -1,5 +1,5 @@
 class FriendshipsController < ApplicationController
-	before_action :filter, :set_users, only: [:search]
+	before_action :filter_users, :set_users, only: [:search]
 	def search; end
 
 	def attach
@@ -15,7 +15,7 @@ class FriendshipsController < ApplicationController
 	end
 
 	private
-	def filter
+	def filter_users
 		@q = User.eager_load(:friends).ransack(params[:q])
 	end
 	def set_users
