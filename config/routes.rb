@@ -30,6 +30,9 @@ Rails.application.routes.draw do
       patch 'add_name', to: 'update_data#update'
     end
   end
+  resources :friendships, only: [] do
+    get 'search', to: 'friendships#search', on: :collection
+  end
   get 'all_users', action: :index, controller: 'all_users'
   post 'all_users/:user_id', action: :attach, controller: 'all_users', as: "follow"
   delete 'all_users/:user_id', action: :detach, controller: 'all_users', as: "unfollow"
