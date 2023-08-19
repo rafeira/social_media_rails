@@ -17,5 +17,9 @@ RSpec.describe User, type: :model do
       it { should_not validate_presence_of(:first_name).on(:update) }
       it { should_not validate_presence_of(:last_name).on(:update) }
     end
+    context 'on destroy' do
+      it { should_not validate_presence_of(:first_name).on(:destroy) }
+      it { should_not validate_presence_of(:last_name).on(:destroy) }
+    end
   end
 end
