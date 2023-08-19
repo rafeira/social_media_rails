@@ -1,24 +1,22 @@
 class FriendshipsController < ApplicationController
 	before_action :filter_users, :set_users, only: [:search]
+	before_action :set_requested, only: [:follow, :unfollow]
 	def search; end
 
-	def attach
-		user = User.find params.require(:user_id)
-		current_user.friends << user
-		redirect_to all_users_path
-	end
+	def follow; end
 
-	def detach
-		user = User.find params.require(:user_id)
-		current_user.friends.delete(user)
-		redirect_to all_users_path
-	end
+	def unfollow; end
 
 	private
 	def filter_users
 		@q = User.eager_load(:friends).ransack(params[:q])
 	end
+
 	def set_users
 		@users = @q.result(distinct: true)
+	end
+
+	def set_requested
+		@requested = User.find(params[:user_id])
 	end
 end
