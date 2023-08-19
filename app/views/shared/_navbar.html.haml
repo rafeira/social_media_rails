@@ -21,7 +21,7 @@
           - if user_signed_in?
             %a.navbar-item{:href => "#"}
               = t('links.profile')
-            = link_to t('links.see_people'),  all_users_path, class: "navbar-item"
+            = link_to t('links.menu.friendship'),  search_friendships_path, class: "navbar-item"
             = link_to t('links.new.post'),  new_post_path, class: "navbar-item"
             %hr.navbar-divider
             = link_to t('links.logoff'), destroy_user_session_path, 'data-turbo-method': :delete, class: "navbar-item"

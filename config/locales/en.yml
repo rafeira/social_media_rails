@@ -9,9 +9,10 @@ en:
     profile:
       add_name: We need your full name
   links:
+    menu:
+      friendship: People
     profile: Profile
     see_posts: See post's friends
-    see_people: See people
     like: Like
     dislike: Dislike
     follow: Follow

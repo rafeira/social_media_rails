@@ -9,9 +9,10 @@
     profile:
       add_name: Precisamos do seu nome completo
   links:
+    menu:
+      friendship: Pessoas
     profile: Perfil
     see_posts: Ver postagens dos amigos
-    see_people: Pessoas
     like: Curtir
     dislike: Descurtir
     follow: Seguir
