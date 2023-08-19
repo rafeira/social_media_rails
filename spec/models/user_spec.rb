@@ -21,5 +21,6 @@ RSpec.describe User, type: :model do
       it { should_not validate_presence_of(:first_name).on(:destroy) }
       it { should_not validate_presence_of(:last_name).on(:destroy) }
     end
+    it { should validate_length_of(:password).is_at_most(128).is_at_least(6) }
   end
 end
