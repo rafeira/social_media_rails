@@ -25,6 +25,12 @@ class User < ApplicationRecord
     save
   end
 
+  def unfollow(candidate)
+    candidate = user_connections.find_by(requested: candidate)
+    return false if candidate.nil?
+    candidate.destroy.destroyed?
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
