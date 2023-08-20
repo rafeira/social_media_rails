@@ -11,7 +11,12 @@ class FriendshipsController < ApplicationController
 		end
 	end
 
-	def unfollow; end
+	def unfollow
+		if current_user.unfollow(@user)
+			@user.broadcast_update(partial: 'friendships/follow_link',
+																locals: {user: @user})
+		end
+	end
 
 	private
 	def filter_users
