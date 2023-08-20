@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :friendships, only: [] do
     get 'search', to: 'friendships#search', on: :collection
     post 'follow', to: 'friendships#follow', on: :member
-    post 'unfollow', to: 'friendships#unfollow', on: :member
+    delete 'unfollow', to: 'friendships#unfollow', on: :member
   end
   get 'all_users', action: :index, controller: 'all_users'
   post 'all_users/:user_id', action: :attach, controller: 'all_users', as: "follow"
