@@ -16,6 +16,10 @@ class User < ApplicationRecord
     first_name.blank? || last_name.blank?
   end
 
+  def follows?(candidate)
+    user_connections.collect(&:requested).include?(candidate)
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
