@@ -20,6 +20,11 @@ class User < ApplicationRecord
     user_connections.collect(&:requested).include?(candidate)
   end
 
+  def follow(candidate)
+    user_connections.build(requested: candidate)
+    save
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
