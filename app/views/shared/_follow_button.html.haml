@@ -1,8 +1,0 @@
-%td
-	%span
-		- if followed? user
-			= link_to t('links.unfollow'), unfollow_path(user),  'data-turbo-method': :delete, class: "button is-danger"
-		- elsif follower? user
-				= link_to t('links.follow_back'), follow_path(user), 'data-turbo-method': :post, class: "button is-primary"
-		- else
-			= link_to t('links.follow'), follow_path(user), 'data-turbo-method': :post, class: "button is-success"
