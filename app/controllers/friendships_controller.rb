@@ -4,7 +4,12 @@ class FriendshipsController < ApplicationController
 	before_action :load_current_user, only: [:search]
 	def search; end
 
-	def follow; end
+	def follow
+		if current_user.follow(@user)
+			@user.broadcast_update(partial: 'friendships/unfollow_link',
+																locals: {user: @user})
+		end
+	end
 
 	def unfollow; end
 
