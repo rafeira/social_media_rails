@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_31_230406) do
+ActiveRecord::Schema.define(version: 2023_08_20_022310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2023_07_31_230406) do
   create_table "user_connections", force: :cascade do |t|
     t.integer "solicitor_user_id"
     t.integer "requested_user_id"
+    t.index ["solicitor_user_id", "requested_user_id"], name: "unique_user_connections", unique: true
   end
 
   create_table "users", force: :cascade do |t|
