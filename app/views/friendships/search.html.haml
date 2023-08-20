@@ -6,15 +6,5 @@
       .actions.ml-6
         = f.submit class: "button is-primary"
   .tile.is-ancestor.is-flex-wrap-wrap
-    - @users.each do |user|
-      .tile.is-3
-        .tile
-          .tile.is-parent
-            %article.tile.is-child.notification.is-dark
-              %p.title
-                = user.full_name
-              %p.subtitle
-                = user.id
-              %figure.image.is-1by1button.block
-                %img{:src => "https://bulma.io/images/placeholders/640x480.png"}
-              = render partial: "shared/follow_button", locals: {user: user}
+    = render partial: 'friendships/user', collection: @users
+
