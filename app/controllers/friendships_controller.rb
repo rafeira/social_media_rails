@@ -15,7 +15,7 @@ class FriendshipsController < ApplicationController
 
 	private
 	def filter_users
-		@q = User.eager_load(:friends).ransack(params[:q])
+		@q = User.ransack(params[:q])
 	end
 
 	def set_users
