@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
 	before_action :filter_users, :set_users, only: [:search]
-	before_action :set_requested, only: [:follow, :unfollow]
+	before_action :set_user, only: [:follow, :unfollow]
 	def search; end
 
 	def follow; end
@@ -16,7 +16,7 @@ class FriendshipsController < ApplicationController
 		@users = @q.result(distinct: true)
 	end
 
-	def set_requested
-		@requested = User.find(params[:user_id])
+	def set_user
+		@user = User.find(params[:id])
 	end
 end
