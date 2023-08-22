@@ -11,21 +11,28 @@ RSpec.describe User, type: :model do
       full_name = "#{built_user.first_name} #{built_user.last_name}"
       expect(built_user.full_name).to eq(full_name)
     end
-    context '#follows?' do
-      it 'is expected to return true' do
-        following = user_with_following.following.last
-        expect(user_with_following.follows?(following)).to be_truthy
+    describe '#follows?(candidate)' do
+      context 'when candidate is followed' do
+        it 'is expected to return true' do
+          following = user_with_following.following.last
+          expect(user_with_following.follows?(following)).to be_truthy
+        end
       end
-      it 'is expected to return false' do
-        expect(user_with_following.follows?(created_user)).to be_falsey
+      context 'when candidate is not followed' do
+        it { expect(created_user.follows?(second_created_user)).to be_falsey }
       end
     end
-    context '#follow(candidate)' do
-      it 'is expected to return true' do
-        expect(created_user.follow(second_created_user)).to be_truthy
+    describe '#follow(candidate)' do
+      context 'when candidate is not followed' do
+        it 'is expected to return true' do
+          expect(created_user.follow(second_created_user)).to be_truthy
+        end
       end
-      it 'is expected to return false' do
-        expect(user_with_following.follows?(created_user)).to be_falsey
+      context 'when candidate is already followed' do
+        it 'is expected to return false' do
+          following = user_with_following.following.last
+          expect(user_with_following.follow(following)).to be_falsey
+        end
       end
     end
   end
