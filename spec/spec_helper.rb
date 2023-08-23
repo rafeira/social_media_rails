@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'capybara/rspec'
 
 Capybara.current_driver = :selenium_chrome

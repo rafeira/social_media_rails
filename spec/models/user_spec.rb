@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -5,7 +7,7 @@ RSpec.describe User, type: :model do
   let(:user_with_following) { create(:user_with_following) }
   let(:created_user) { create(:user) }
   let(:second_created_user) { create(:user) }
-  let(:following) {user_with_following.following.last}
+  let(:following) { user_with_following.following.last }
   context 'instance methods' do
     it '#full_name' do
       full_name = "#{built_user.first_name} #{built_user.last_name}"
@@ -27,7 +29,7 @@ RSpec.describe User, type: :model do
           expect(created_user.follow(second_created_user)).to be_truthy
         end
         it 'is expected to increase following by 1' do
-          expect{ created_user.follow(second_created_user) }.to change{ created_user.following.count}.by(1)
+          expect { created_user.follow(second_created_user) }.to change { created_user.following.count }.by(1)
         end
       end
       context 'when candidate is already followed' do
@@ -35,7 +37,7 @@ RSpec.describe User, type: :model do
           expect(user_with_following.follow(following)).to be_falsey
         end
         it 'is expected to not increase following' do
-          expect{ user_with_following.follow(following) }.not_to change{ created_user.following.count}
+          expect { user_with_following.follow(following) }.not_to(change { created_user.following.count })
         end
       end
     end

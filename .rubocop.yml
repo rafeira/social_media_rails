@@ -1,0 +1,25 @@
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0.2
+  DisplayCopNames: true
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'node_modules/**/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'spec/**/*'
+    - 'test/test_helper.rb'
+    - 'tmp/**/*'
+    - 'scaffold_models.rb'
+    - 'lib/tasks/dev.rake'
+Layout/LineLength:
+  Exclude:
+    - Gemfile
+    - Rakefile
+    - app/views/**/*.json.jbuilder
+  Max: 120
+Style/Documentation:
+  Enabled: False

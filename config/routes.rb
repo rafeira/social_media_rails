@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -5,7 +7,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  root "posts#index"
+  root 'posts#index'
   resources :posts do
     post 'likes', action: :create, controller: 'likes'
     delete 'likes', action: :destroy, controller: 'likes'
@@ -36,8 +38,8 @@ Rails.application.routes.draw do
     delete 'unfollow', to: 'friendships#unfollow', on: :member
   end
   get 'all_users', action: :index, controller: 'all_users'
-  post 'all_users/:user_id', action: :attach, controller: 'all_users', as: "follow"
-  delete 'all_users/:user_id', action: :detach, controller: 'all_users', as: "unfollow"
+  post 'all_users/:user_id', action: :attach, controller: 'all_users', as: 'follow'
+  delete 'all_users/:user_id', action: :detach, controller: 'all_users', as: 'unfollow'
   get 'all_users/:followers', action: :all_followers, controller: 'all_users'
   get 'all_users/:following', action: :all_following, controller: 'all_users'
 end

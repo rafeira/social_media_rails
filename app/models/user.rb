@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   rolify
   devise :database_authenticatable, :registerable,
@@ -28,6 +30,7 @@ class User < ApplicationRecord
   def unfollow(candidate)
     candidate = user_connections.find_by(requested: candidate)
     return false if candidate.nil?
+
     candidate.destroy.destroyed?
   end
 
