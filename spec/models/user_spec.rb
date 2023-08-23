@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   let(:user_with_following) { create(:user_with_following) }
   let(:created_user) { create(:user) }
   let(:second_created_user) { create(:user) }
-
+  let(:following) {user_with_following.following.last}
   context 'instance methods' do
     it '#full_name' do
       full_name = "#{built_user.first_name} #{built_user.last_name}"
@@ -14,7 +14,6 @@ RSpec.describe User, type: :model do
     describe '#follows?(candidate)' do
       context 'when candidate is followed' do
         it 'is expected to return true' do
-          following = user_with_following.following.last
           expect(user_with_following.follows?(following)).to be_truthy
         end
       end
@@ -30,7 +29,6 @@ RSpec.describe User, type: :model do
       end
       context 'when candidate is already followed' do
         it 'is expected to return false' do
-          following = user_with_following.following.last
           expect(user_with_following.follow(following)).to be_falsey
         end
       end
