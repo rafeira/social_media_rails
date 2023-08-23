@@ -28,15 +28,15 @@ RSpec.describe User, type: :model do
         it 'is expected to return true' do
           expect(created_user.follow(second_created_user)).to be_truthy
         end
-        it 'is expected to increase following by 1' do
-          expect { created_user.follow(second_created_user) }.to change { created_user.following.count }.by(1)
+        it 'is expected to increase following count from 0 to 1' do
+          expect { created_user.follow(second_created_user) }.to change { created_user.following.count }.from(0).to(1)
         end
       end
       context 'when candidate is already followed' do
         it 'is expected to return false' do
           expect(user_with_following.follow(following)).to be_falsey
         end
-        it 'is expected to not increase following' do
+        it 'is expected to not change following count' do
           expect { user_with_following.follow(following) }.not_to(change { created_user.following.count })
         end
       end
