@@ -41,5 +41,23 @@ RSpec.describe User, type: :model do
         end
       end
     end
+    describe '#unfollow(candidate)' do
+      context 'when candidate is not followed' do
+        it 'is expected to return false' do
+          expect(created_user.unfollow(second_created_user)).to be_falsey
+        end
+        it 'is expected to not change following count' do
+          expect { created_user.unfollow(second_created_user) }.not_to(change { created_user.following.count })
+        end
+      end
+      context 'when candidate is followed' do
+        it 'is expected to return false' do
+          expect(user_with_following.unfollow(following)).to be_truthy
+        end
+        it 'is expected to decrease following count from 1 to 0' do
+          expect { user_with_following.unfollow(following) }.to change { user_with_following.following.count }.from(1).to(0)
+        end
+      end
+    end
   end
 end
