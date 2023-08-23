@@ -66,17 +66,16 @@ gem 'pg'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'pry-nav'
-  gem 'pry-rails'
-  gem 'pry-remote'
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'ffaker'
+  gem 'pry-nav'
+  gem 'pry-rails'
+  gem 'pry-remote'
   gem 'tty-spinner'
 end
 
 group :development do
-
   gem 'rubocop-rails', require: false
   gem 'web-console'
 end
