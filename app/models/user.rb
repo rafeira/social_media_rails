@@ -4,9 +4,10 @@ class User < ApplicationRecord
   rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :user_connections, foreign_key: :solicitor_user_id
-  has_many :following, through: :user_connections, source: :requested
-  has_many :followers, through: :user_connections, source: :requester
+  has_many :requested_connections, foreign_key: :solicitor_user_id, class_name: 'UserConnection'
+  has_many :following, through: :requested_connections, source: :requested
+  has_many :received_connection_requests, foreign_key: :requested_user_id, class_name: 'UserConnection'
+  has_many :followers, through: :received_connection_requests, source: :requester
   has_many :posts
   has_many :comments
   has_many :likes
@@ -19,16 +20,16 @@ class User < ApplicationRecord
   end
 
   def follows?(candidate)
-    user_connections.collect(&:requested).include?(candidate)
+    requested_connections.collect(&:requested).include?(candidate)
   end
 
   def follow(candidate)
-    user_connections.build(requested: candidate)
+    requested_connections.build(requested: candidate)
     save
   end
 
   def unfollow(candidate)
-    candidate = user_connections.find_by(requested: candidate)
+    candidate = requested_connections.find_by(requested: candidate)
     return false if candidate.nil?
 
     candidate.destroy.destroyed?

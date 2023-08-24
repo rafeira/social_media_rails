@@ -35,6 +35,6 @@ class FriendshipsController < ApplicationController
   end
 
   def load_current_user
-    @current_user = User.includes(user_connections: :requested).find(current_user.id)
+    @current_user = User.includes(requested_connections: :requested).find(current_user.id)
   end
 end
