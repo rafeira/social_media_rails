@@ -23,7 +23,7 @@ class FriendshipsController < ApplicationController
   private
 
   def filter_users
-    @q = User.ransack(params[:q])
+    @q = User.where.not(id: current_user.id).ransack(params[:q])
   end
 
   def set_users
