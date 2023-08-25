@@ -3,7 +3,7 @@
 class FriendshipsController < ApplicationController
   before_action :filter_users, :set_users, only: [:search]
   before_action :set_user, only: %i[follow unfollow]
-  before_action :load_current_user, only: [:search]
+  before_action :load_current_user, only: %i[search follow unfollow]
   def search; end
 
   def follow
