@@ -40,6 +40,11 @@ RSpec.describe User, type: :model do
           expect { user_with_following.follow(following) }.not_to(change { created_user.following.count })
         end
       end
+      context 'when candidate is itself' do
+        it 'is expected to return false' do
+          expect(created_user.follow(created_user)).to be_falsey
+        end
+      end
     end
     describe '#unfollow(candidate)' do
       context 'when candidate is not followed' do
