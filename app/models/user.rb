@@ -29,10 +29,10 @@ class User < ApplicationRecord
   end
 
   def unfollow(candidate)
-    candidate = requested_connections.find_by(requested: candidate)
-    return false if candidate.nil?
+    connection = requested_connections.find_by(requested_user_id: candidate.id)
+    return false unless connection
 
-    candidate.destroy.destroyed?
+    requested_connections.destroy(connection)
   end
 
   def full_name
