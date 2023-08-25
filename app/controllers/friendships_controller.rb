@@ -23,7 +23,7 @@ class FriendshipsController < ApplicationController
   private
 
   def filter_users
-    @q = User.where.not(id: current_user.id).ransack(params[:q])
+    @q = User.includes(:followers).where.not(id: current_user.id).ransack(params[:q])
   end
 
   def set_users
@@ -31,7 +31,7 @@ class FriendshipsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.includes(:followers).find(params[:id])
   end
 
   def load_current_user
