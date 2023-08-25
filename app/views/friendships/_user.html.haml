@@ -1,16 +1,15 @@
-.tile.is-3
+= turbo_stream_from(user)
+.tile.is-3{id: dom_id(user)}
   .tile
     .tile.is-parent
-      %article.tile.is-child.notification.is-dark
-        = turbo_stream_from(user)
+      %article.tile.is-child.notification
         %p.title
           = user.full_name
         %p.subtitle
-          = user.id
-        %figure.image.is-1by1button.block
-          %img{:src => "https://bulma.io/images/placeholders/640x480.png"}
-        %div{id: dom_id(user)}
-          - if @current_user.follows?(user)
-            = render(partial: 'unfollow_link', locals: {user: user})
-          - else
-            = render(partial: 'follow_link', locals: {user: user})
+          = "#{user.followers.length} seguidores"
+        %p.subtitle
+          = logged_user.follows?(user)
+        - if logged_user.follows?(user)
+          = render(partial: 'friendships/unfollow_link', locals: {user: user})
+        - else
+          = render(partial: 'friendships/follow_link', locals: {user: user})

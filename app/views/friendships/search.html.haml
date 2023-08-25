@@ -6,5 +6,6 @@
       .actions.ml-6
         = f.submit class: "button is-primary"
   .tile.is-ancestor.is-flex-wrap-wrap
-    = render partial: 'friendships/user', collection: @users
+    - @users.each do |user|
+      = render partial: 'friendships/user', locals: {user: user, logged_user: @current_user}
 

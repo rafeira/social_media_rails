@@ -7,17 +7,19 @@ class FriendshipsController < ApplicationController
   def search; end
 
   def follow
-    return unless current_user.follow(@user)
+    return unless @current_user.follow(@user)
 
-    @user.broadcast_update(partial: 'friendships/unfollow_link',
-                           locals: { user: @user })
+    @user.followers.reload
+    @user.broadcast_update(partial: 'friendships/user',
+                           locals: { user: @user, logged_user: @current_user })
   end
 
   def unfollow
-    return unless current_user.unfollow(@user)
+    return unless @current_user.unfollow(@user)
 
-    @user.broadcast_update(partial: 'friendships/follow_link',
-                           locals: { user: @user })
+    @user.followers.reload
+    @user.broadcast_update(partial: 'friendships/user',
+                           locals: { user: @user, logged_user: @current_user })
   end
 
   private
