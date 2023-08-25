@@ -51,7 +51,7 @@ RSpec.describe User, type: :model do
         end
       end
       context 'when candidate is followed' do
-        it 'is expected to return false' do
+        it 'is expected to return true' do
           expect(user_with_following.unfollow(following)).to be_truthy
         end
         it 'is expected to decrease following count from 1 to 0' do
