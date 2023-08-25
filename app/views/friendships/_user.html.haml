@@ -1,15 +1,14 @@
-= turbo_stream_from(user)
-.tile.is-3{id: dom_id(user)}
-  .tile
-    .tile.is-parent
-      %article.tile.is-child.notification
-        %p.title
-          = user.full_name
-        %p.subtitle
-          = "#{user.followers.length} seguidores"
-        %p.subtitle
-          = logged_user.follows?(user)
-        - if logged_user.follows?(user)
-          = render(partial: 'friendships/unfollow_link', locals: {user: user})
-        - else
-          = render(partial: 'friendships/follow_link', locals: {user: user})
+
+.tile
+  .tile.is-parent
+    %article.tile.is-child.notification
+      %p.title
+        = user.full_name
+      %p.subtitle
+        = "#{user.followers.length} seguidores"
+      %p.subtitle
+        = "Email: #{user.email}"
+      - if logged_user.follows?(user)
+        = render(partial: 'friendships/unfollow_link', locals: {user: user})
+      - else
+        = render(partial: 'friendships/follow_link', locals: {user: user})

@@ -7,5 +7,7 @@
         = f.submit class: "button is-primary"
   .tile.is-ancestor.is-flex-wrap-wrap
     - @users.each do |user|
-      = render partial: 'friendships/user', locals: {user: user, logged_user: @current_user}
+      = turbo_stream_from(user)
+      .tile.is-3{id: dom_id(user)}
+        = render partial: 'friendships/user', locals: {user: user, logged_user: @current_user}
 
