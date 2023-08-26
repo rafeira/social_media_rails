@@ -1,4 +1,9 @@
 en:
+  datetime:
+    distance_in_words:
+      x_days:
+        one: 1 day
+        other: '%{count} days'
   application_name: Social Media
   current_locale: "English (International)"
   labels:

@@ -24,7 +24,7 @@
       %br/
       .tag.is-warning
         %time{datetime: "2016-1-1"}
-          = post.created_at
+          = distance_of_time_in_words(DateTime.now, post.created_at)
   .card-footer
     - if logged_user.likes?(post)
       = render partial: 'posts/dislike_link', locals: { post: post }
