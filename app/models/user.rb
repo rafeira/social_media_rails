@@ -28,6 +28,11 @@ class User < ApplicationRecord
     save
   end
 
+  def like(likeable)
+    likes.build(likeable: likeable)
+    save
+  end
+
   def unfollow(candidate)
     connection = requested_connections.find_by(requested_user_id: candidate.id)
     return false unless connection
