@@ -33,6 +33,12 @@ class User < ApplicationRecord
     save
   end
 
+  def dislike(likeable)
+    like = likes.find_by(likeable: likeable)
+    return false unless like
+    likes.destroy(like)
+  end
+
   def unfollow(candidate)
     connection = requested_connections.find_by(requested_user_id: candidate.id)
     return false unless connection

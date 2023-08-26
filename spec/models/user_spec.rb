@@ -94,5 +94,33 @@ RSpec.describe User, type: :model do
         end
       end
     end
+    describe '#dislike(likeable)' do
+      context 'when likeable is a post' do
+        context 'and post is liked' do
+          it 'is expected to return true' do
+            post = user_with_one_like_to_post.likes.last.likeable
+            expect(user_with_one_like_to_post.dislike(post)).to be_truthy
+          end
+          it 'is expected to decrease user and post likes by 1' do
+            liked_post = user_with_one_like_to_post.likes.last.likeable
+            expect {
+              user_with_one_like_to_post.dislike(liked_post)
+            }.to change { user_with_one_like_to_post.likes.count }.from(1).to(0)
+             .and change { liked_post.likes.count }.from(1).to(0)
+          end
+        end
+        context 'and post is not liked' do
+          it 'is expected to return false' do
+            expect(created_user.dislike(post)).to be_falsey
+          end
+          it 'is expected to not change user and post likes count' do
+            expect{
+              created_user.dislike(post)
+            }.to change { created_user.likes.count }.by(0)
+            .and change { post.likes.count }.by(0)
+          end
+        end
+      end
+    end
   end
 end
