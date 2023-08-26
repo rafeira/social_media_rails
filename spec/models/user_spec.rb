@@ -122,5 +122,20 @@ RSpec.describe User, type: :model do
         end
       end
     end
+    describe '#likes?(likeable)' do
+      context 'when likeable is a post' do
+        context 'and post is liked' do
+          it 'is expected to return true' do
+            post = user_with_one_like_to_post.likes.last.likeable
+            expect(user_with_one_like_to_post.likes?(post)).to be_truthy
+          end
+        end
+        context 'and post is not liked' do
+          it 'is expected to return false' do
+            expect(created_user.likes?(post)).to be_falsey
+          end
+        end
+      end
+    end
   end
 end
