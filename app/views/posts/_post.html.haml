@@ -18,10 +18,6 @@
       = post.description
       .tags.has-addons
         .tag.is-info
-          = Like.model_name.human(count: 2)
-        .tag.is-dark
-          = "#{post.likes.length} "
-        .tag.is-info
           = link_to Comment.model_name.human(count: 2), post_comments_path(post_id: post.id), class: "has-text-white"
         .tag.is-dark
           = link_to "#{post.comments.length}", post_comments_path(post_id: post.id), class: "has-text-white"
