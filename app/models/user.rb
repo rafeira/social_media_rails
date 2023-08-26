@@ -36,6 +36,7 @@ class User < ApplicationRecord
   def dislike(likeable)
     like = likes.find_by(likeable: likeable)
     return false unless like
+
     likes.destroy(like)
   end
 
@@ -48,5 +49,9 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def likes?(likeable)
+    likes.collect(&:likeable).include?(likeable)
   end
 end
