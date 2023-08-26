@@ -8,6 +8,8 @@ RSpec.describe User, type: :model do
   let(:created_user) { create(:user) }
   let(:second_created_user) { create(:user) }
   let(:following) { user_with_following.following.last }
+  let(:user_with_one_like_to_post) { create(:user_with_one_like_to_post) }
+  let(:post) { create(:post) }
   context 'instance methods' do
     it '#full_name' do
       full_name = "#{built_user.first_name} #{built_user.last_name}"
@@ -66,10 +68,28 @@ RSpec.describe User, type: :model do
     end
     describe '#like(likeable)' do
       context 'when likeable is a post' do
-        context 'post is already liked' do
+        context 'and post is already liked' do
           it 'is expected to return false' do
             post = user_with_one_like_to_post.likes.last.likeable
-            expect(created_user.like(post)).to be_falsey
+            expect(user_with_one_like_to_post.like(post)).to be_falsey
+          end
+          it 'is expected to not change user and post likes count' do
+            liked_post = user_with_one_like_to_post.likes.last.likeable
+            expect {
+              user_with_one_like_to_post.like(liked_post)
+            }.to change { user_with_one_like_to_post.likes.count }.by(0)
+             .and change { liked_post.likes.count }.by(0)
+          end
+        end
+        context 'and post is not liked' do
+          it 'is expected to return true' do
+            expect(created_user.like(post)).to be_truthy
+          end
+          it 'is expected to increase user and post likes count from 0 to 1' do
+            expect{
+              created_user.like(post)
+            }.to change { created_user.likes.count }.from(0).to(1)
+            .and change { post.likes.count }.from(0).to(1)
           end
         end
       end
