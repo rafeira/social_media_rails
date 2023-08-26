@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
     get 'comments', action: :index, controller: 'post_comments'
     get 'comments/new', action: :new, controller: 'post_comments'
+    post 'like', to: 'posts#like', on: :member
+    delete 'dislike', to: 'posts#dislike', on: :member
   end
   resources :comments do
     post 'likes', action: :create, controller: 'likes'
