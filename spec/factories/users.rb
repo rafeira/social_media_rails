@@ -14,6 +14,12 @@ FactoryBot.define do
         create_list(:user_connection, evaluator.user_connections_quantity, requester: user)
       end
     end
+    trait :with_one_like_to_post do
+      after(:create) do |user, evaluator|
+        create(:like_to_post, user: user)
+      end
+    end
     factory :user_with_following, traits: [:with_one_following]
+    factory :user_with_one_like_to_post, traits: [:with_one_like_to_post]
   end
 end
