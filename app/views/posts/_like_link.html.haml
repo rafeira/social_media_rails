@@ -1,4 +1,5 @@
 = link_to like_post_path(post), method: :post do
-  %span
-    = post.likes.length
-  %i{class: 'fa-regular fa-heart'}
+  .dislike-link
+    %span
+      = post.likes.length
+    %i{class: 'fa-regular fa-heart fa-shake'}

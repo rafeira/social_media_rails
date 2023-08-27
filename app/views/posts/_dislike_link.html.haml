@@ -1,4 +1,5 @@
 = link_to dislike_post_path(post), method: :delete do
-  %span
-    = post.likes.length
-  %i{class: 'fa-solid fa-heart'}
+  .like-link
+    %span
+      = post.likes.length
+    %i{class: 'fa-solid fa-heart fa-beat'}
