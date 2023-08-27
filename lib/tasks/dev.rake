@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+include FactoryBot::Syntax::Methods
+
 namespace :dev do
   DEFAULT_PASSWORD = 123_456
   desc 'Configura o ambiente de desenvolvimento'
@@ -20,51 +22,40 @@ namespace :dev do
 
   desc 'Adiciona usuários padrão'
   task add_default_users: :environment do
-    User.create!(create_default_users)
+    create(:user, password: DEFAULT_PASSWORD, email: 'user@user.com')
+    create(:user, password: DEFAULT_PASSWORD, email: 'rafeira@user.com')
   end
 
   desc 'Adiciona usuários'
   task add_users: :environment do
-    User.create!(create_users)
+    create_list(:user, 20)
   end
 
   desc 'Adiciona postagens a usuários'
   task add_posts_to_users: :environment do
     users = User.all
     users.each do |user|
-      rand(0..5).times do
-        user.posts.build(
-          title: FFaker::Lorem.words(rand(2..5)).join(' '),
-          description: FFaker::Lorem.paragraphs(rand(2..4)).join("\n")
-        ).save!
-      end
+      create_list(:post, rand(0..5), user: user)
     end
   end
 
   desc 'Adiciona comentários a postagens'
   task add_comments_to_posts: :environment do
     posts = Post.all
+
     posts.each do |post|
-      rand(1..4).times do
-        post.comments.build(
-          description: FFaker::Lorem.paragraphs(2).join("\n"),
-          user: User.all.sample
-        ).save!
-      end
+      user = User.where.not(id: post.comments.pluck(:user_id)).sample
+      create_list(:comment, rand(1..4), commentable: post, user: user)
     end
   end
 
   desc 'Adiciona likes a comentários e postagens'
   task add_likes_to_likeable: :environment do
-    likeables = [Post.all, Comment.all].flatten
-    all_users = User.all
+    likeables = [Comment.all, Post.all].flatten(1)
     likeables.each do |likeable|
-      users = all_users.to_a
       3.times do
-        user = users.sample
-        like = likeable.likes.first_or_create user: user
-        like.save
-        users.delete user
+        user = User.where.not(id: likeable.likes.pluck(:user_id)).sample
+        create(:like, user: user, likeable: likeable)
       end
     end
   end
@@ -76,38 +67,5 @@ namespace :dev do
     spinner.auto_spin
     yield
     spinner.success "(#{msg_end})"
-  end
-
-  def create_users
-    users = []
-    20.times do
-      users << {
-        email: FFaker::Internet.email,
-        first_name: FFaker::Name.first_name,
-        last_name: FFaker::Name.last_name,
-        password: DEFAULT_PASSWORD,
-        password_confirmation: DEFAULT_PASSWORD
-      }
-    end
-    users
-  end
-
-  def create_default_users
-    [
-      {
-        email: 'user@user.com',
-        password: DEFAULT_PASSWORD,
-        first_name: FFaker::Name.first_name,
-        last_name: FFaker::Name.last_name,
-        password_confirmation: DEFAULT_PASSWORD
-      },
-      {
-        email: 'rafeira@user.com',
-        first_name: FFaker::Name.first_name,
-        last_name: FFaker::Name.last_name,
-        password: DEFAULT_PASSWORD,
-        password_confirmation: DEFAULT_PASSWORD
-      }
-    ]
   end
 end
