@@ -1,9 +1,4 @@
 'pt-BR':
-  datetime:
-    distance_in_words:
-      x_days:
-        one: 1 dia
-        other: "%{count} dias"
   application_name: Rede Social
   current_locale: "Português - BR"
   labels:

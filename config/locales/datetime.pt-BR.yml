@@ -1,0 +1,21 @@
+pt-BR:
+  datetime:
+    distance_in_words:
+      x_seconds: "alguns segundos"
+      less_than_x_seconds:
+        one: "menos de 1 segundo"
+        other: "menos de %{count} segundos"
+      half_a_minute: "meio minuto"
+      less_than_x_minutes:
+        one: "menos de 1 minuto"
+        other: "menos de %{count} minutos"
+      x_minutes: "%{count} minutos"
+      about_x_hours: "aproximadamente %{count} horas"
+      x_hours: "%{count} horas"
+      about_x_days: "aproximadamente %{count} dias"
+      x_days: "%{count} dias"
+      about_x_months: "aproximadamente %{count} meses"
+      x_months: "%{count} meses"
+      about_x_years: "aproximadamente %{count} anos"
+      over_x_years: "mais de %{count} anos"
+      almost_x_years: "quase %{count} anos"
