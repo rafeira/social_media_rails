@@ -39,9 +39,4 @@ Rails.application.routes.draw do
     post 'follow', to: 'friendships#follow', on: :member
     delete 'unfollow', to: 'friendships#unfollow', on: :member
   end
-  get 'all_users', action: :index, controller: 'all_users'
-  post 'all_users/:user_id', action: :attach, controller: 'all_users', as: 'follow'
-  delete 'all_users/:user_id', action: :detach, controller: 'all_users', as: 'unfollow'
-  get 'all_users/:followers', action: :all_followers, controller: 'all_users'
-  get 'all_users/:following', action: :all_following, controller: 'all_users'
 end
