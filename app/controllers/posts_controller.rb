@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   end
 
   def set_posts
-    following = current_user.following.includes(posts: [:user, :comments, { likes: :user }])
+    following = current_user.following.includes(posts: [:user, :latest_comments_first, { likes: :user }])
     @posts = following.map(&:posts).flatten(1)
   end
 
