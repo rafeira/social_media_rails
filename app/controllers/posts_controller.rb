@@ -2,7 +2,8 @@
 
 class PostsController < ApplicationController
   before_action :set_posts, only: [:index]
-  before_action :set_post, :load_current_user, only: %i[like dislike]
+  before_action :set_post, :load_current_user, only: %i[like dislike add_comment]
+  after_action :broadcast_update, only: %i[like dislike add_comment]
   def index; end
 
   def new
@@ -15,23 +16,21 @@ class PostsController < ApplicationController
   end
 
   def like
-    return unless @current_user.like(@post)
-
-    @post.broadcast_update(partial: 'posts/post',
-                           locals: { post: @post, logged_user: @current_user })
+    nil unless @current_user.like(@post)
   end
 
   def dislike
-    return unless @current_user.dislike(@post)
+    nil unless @current_user.dislike(@post)
+  end
 
-    @post.broadcast_update(partial: 'posts/post',
-                           locals: { post: @post, logged_user: @current_user })
+  def add_comment
+    nil unless @post.update(post_params)
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :description)
+    params.require(:post).permit(:title, :description, comments_attributes: %i[description user_id])
   end
 
   def set_posts
@@ -45,5 +44,10 @@ class PostsController < ApplicationController
 
   def load_current_user
     @current_user = User.includes(likes: :likeable).find(current_user.id)
+  end
+
+  def broadcast_update
+    @post.broadcast_update(partial: 'posts/post',
+                           locals: { post: @post, logged_user: @current_user })
   end
 end

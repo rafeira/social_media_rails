@@ -11,6 +11,8 @@
         one: Comentário
         other: Comentários
     attributes:
+      comment:
+        description: Descrição
       user:
         first_name: Nome
         last_name: Sobrenome

@@ -18,6 +18,8 @@ en:
     follow: Follow
     unfollow: Unfollow
     follow_back: Follow back
+    post:
+      add_comment: Add comment
     comment:
       post: Comment this post
       comment: Comment this comment

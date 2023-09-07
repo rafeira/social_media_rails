@@ -35,7 +35,8 @@
             = comment.user.full_name
           %p
             = comment.description
-    = form_with model: Comment.new, url: '/', method: :post do |f|
-      = f.text_field :message, class: 'input'
-      = f.submit class: 'button'
-      -# = link_to t('links.comment.post'), post_comments_new_path(post_id: post.id), class: "card-footer-item button is-primary"
+    = form_with model: post, url: add_comment_post_path(post), method: :patch do |f|
+      = f.fields_for :comments, post.comments.build do |comment_form|
+        = comment_form.text_field :description, class: 'input', placeholder: Comment.human_attribute_name(:description)
+        = comment_form.hidden_field :user_id, value: logged_user.id, class: 'input block'
+      = f.submit t('links.post.add_comment'), class: 'button'
