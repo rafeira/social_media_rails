@@ -21,10 +21,12 @@
         %time{datetime: "2016-1-1"}
           = distance_of_time_in_words(DateTime.now, post.created_at)
       .tags.has-addons
-        .tag.is-info
-          = link_to Comment.model_name.human(count: 2), post_comments_path(post_id: post.id), class: "has-text-white"
-        .tag.is-dark
-          = link_to "#{post.comments.length}", post_comments_path(post_id: post.id), class: "has-text-white"
+        .tag
+          %span.has-text-grey-darker
+            = Comment.model_name.human(count: 2)
+        .tag
+          %span.has-text-grey
+            = post.comments.length
     .comments-container
       = form_with model: post, url: add_comment_post_path(post), method: :patch, class: 'my-4' do |f|
         = f.fields_for :comments, post.comments.build do |comment_form|
