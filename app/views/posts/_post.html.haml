@@ -28,7 +28,11 @@
     .comments-container
       = form_with model: post, url: add_comment_post_path(post), method: :patch, class: 'my-4' do |f|
         = f.fields_for :comments, post.comments.build do |comment_form|
-          = comment_form.text_field :description, class: 'input is-rounded', placeholder: Comment.human_attribute_name(:description)
+          - border_color_class = post.errors['comments.description'].present? ? 'is-danger' : ''
+          = comment_form.text_field :description, class: "input is-rounded #{border_color_class}", placeholder: Comment.human_attribute_name(:description)
+          %p.help.is-danger
+            - post.errors['comments.description'].each do |error|
+              = error
           = comment_form.hidden_field :user_id, value: logged_user.id, class: 'input block'
         = f.submit t('links.post.add_comment'), class: 'button is-info is-light is-small is-fullwidth is-outlined is-rounded my-4'
       - post.latest_comments_first[0, 3].each do |comment|

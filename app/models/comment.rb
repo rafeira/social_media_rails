@@ -7,4 +7,6 @@ class Comment < ApplicationRecord
   has_many :likes, as: :likeable
 
   scope :latest_first, -> { order(created_at: :desc) }
+
+  validates :description, length: { minimum: 10, maximum: 1000 }
 end

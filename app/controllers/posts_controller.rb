@@ -25,6 +25,7 @@ class PostsController < ApplicationController
 
   def add_comment
     nil unless @post.update(post_params)
+    @post.comments.reload
   end
 
   private

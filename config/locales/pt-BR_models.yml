@@ -16,3 +16,10 @@
       user:
         first_name: Nome
         last_name: Sobrenome
+    errors:
+      models:
+        comment:
+          attributes:
+            description:
+              too_short: está muito curta (mínimo é 10 caracteres)
+              too_long:  está muito longa (máximo é 1000 caracteres)
