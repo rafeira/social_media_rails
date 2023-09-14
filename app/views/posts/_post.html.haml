@@ -1,13 +1,14 @@
 .card.my-6.post-container
   .card-content
-    .media
-      .media-left
-        %figure.image.is-48x48
-          %img{:alt => "Placeholder image", :src => "https://bulma.io/images/placeholders/96x96.png"}/
-      .media-content
+    .is-flex.is-flex-direction-row.is-justify-content-space-between
+      .post-author-name.is-flex.is-flex-direction-row.is-align-items-center
+        %i.fa-regular.fa-user.fa-xl.mr-4{style: 'color: blue;'}
         %p.title.is-4
           = post.user.full_name
-      .media-right
+      .post-actions.is-flex.is-flex-direction-row
+        - if can_destroy_post
+          = link_to '#' do
+            %i.fa-solid.fa-trash.fa-sm.mr-4{style: 'color: red;'}
         - if logged_user.likes?(post)
           = render partial: 'posts/dislike_link', locals: { post: post }
         - else

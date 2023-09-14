@@ -54,6 +54,6 @@ class PostsController < ApplicationController
 
   def broadcast_update
     @post.broadcast_update(partial: 'posts/post',
-                           locals: { post: @post, logged_user: @current_user })
+                           locals: { post: @post, logged_user: @current_user, can_destroy_post: can?(:destroy, @post) })
   end
 end

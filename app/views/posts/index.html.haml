@@ -4,4 +4,4 @@
   - @posts.each do |post|
     = turbo_stream_from(post)
     .block{id: dom_id(post)}
-      = render partial: 'post', locals: { post: post, logged_user: @current_user }
+      = render partial: 'post', locals: { post: post, logged_user: @current_user, can_destroy_post: can?(:destroy, post) }
