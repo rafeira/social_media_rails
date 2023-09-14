@@ -36,12 +36,12 @@ class PostsController < ApplicationController
 
   def set_author_ids
     @author_ids = current_user.following_ids
-    @author_ids <<  current_user.id
+    @author_ids << current_user.id
   end
 
   def set_posts
     @posts = Post.where(user_id: @author_ids).includes(:user, :latest_comments_first,
-                                                         { likes: :user }).order(created_at: :desc)
+                                                       { likes: :user }).order(created_at: :desc)
   end
 
   def set_post
