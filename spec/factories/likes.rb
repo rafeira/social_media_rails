@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :like do
-    user { create(:user) }
+    user { association(:user) }
     trait :to_post do
-      likeable { create(:post) }
+      likeable { association(:post) }
     end
     factory :like_to_post, traits: [:to_post]
   end

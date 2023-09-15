@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :user_connection do
-    requester { create(:user) }
-    requested { create(:user) }
+    requester { association(:user) }
+    requested { association(:user) }
   end
 end
